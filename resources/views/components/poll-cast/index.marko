@@ -1,0 +1,37 @@
+static {
+  const spacetime = require('spacetime')
+  const { convertToLocaltime } = require('../../../../lib/util')
+}
+
+<!-- novalidate: ie10 -->
+<form name="poll" action='' enctype="application/json" method="post" novalidate=true on-submit('_onSubmit')>
+  <div class="field" for(choice in input.poll.choices | status-var=loop) no-update-body>
+    <input type="radio" id=('choice' + loop.getIndex()) class="is-checkradio is-black" name="choice" value=choice on-change('_onChange') />
+    <label for=('choice' + loop.getIndex())>${choice}</label>
+  </div>
+  <div class="field">
+    <label class="label" no-update>Created ${input.poll.created ? spacetime(Date.parse(convertToLocaltime(input.poll.created))).fromNow().qualified : 'sometime ago'} - ${input.poll.views} views</label>
+  </div>
+  <div class="level">
+    <div class="level-left">
+      <div class="field">
+        <div class="control">
+          <input type="hidden" name="_csrf" value=state.token />
+          <if(input.poll.captcha)>
+            <recaptcha-button text="Vote" disabled=state.disabled on-captcharesponse('_onCaptchaResponse')></recaptcha-button>
+          </if>
+          <else>
+            <button class="button is-medium is-outlined is-primary" type="submit" disabled=state.disabled>Vote</button>
+          </else>
+        </div>
+      </div>
+    </div>
+    <div class="level-right">
+      <div class="field">
+        <div class="control">
+          <button class="button is-medium is-outlined is-primary">View Results</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

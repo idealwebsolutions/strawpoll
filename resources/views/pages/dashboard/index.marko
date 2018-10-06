@@ -1,0 +1,19 @@
+<include('../../base.marko') title=input.title>
+  <@header>
+    <main-navigation user=(input.user || {}) authenticated=input.authenticated />
+  </@header>
+  <@main>
+    <section class="section">
+      <div class="container">
+        <div class="columns is-multiline">
+          <div class="column is-one-quarter">
+            <sidenav-section user=(input.user || {}) no-update />
+          </div>
+          <div class="column is-three-quarters">
+            <summary-section />
+          </div>
+        </div>
+      </div>
+    </section>
+  </@main>
+</include>

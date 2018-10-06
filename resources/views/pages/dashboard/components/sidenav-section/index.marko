@@ -1,0 +1,23 @@
+<aside class="menu">
+  <p class="menu-label">Polls</p>
+  <ul class="menu-list">
+    <li>
+      <a href="#" class="is-active">Summary</a>
+    </li>
+    <li>
+      <a href="#">Drafts</a>
+    </li>
+  </ul>
+  <p class="menu-label">Administration</p>
+  <ul class="menu-list">
+    <li>
+      <a>Profile</a>
+    </li>
+    <li>
+      <a>Invitations</a>
+    </li>
+    <li if(input.user.role === 2)>
+      <a>Users</a>
+    </li>
+  </ul>
+</aside>

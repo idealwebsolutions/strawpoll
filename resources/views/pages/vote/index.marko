@@ -1,0 +1,26 @@
+static {
+  const { Agent } = require('https')
+  const axios = require('axios')
+}
+
+$ const PollProvider = axios.get(`https://127.0.0.1:9000/api/v1/poll/${input.hash}`, {
+  httpsAgent: new Agent({
+    rejectUnauthorized: false
+  })
+})
+
+$ const CommentProvider = axios.get(`https://127.0.0.1:9000/api/v1/comments/${input.hash}`)
+
+<include('../../base.marko') title=input.title>
+  <@header>
+    <main-navigation user=(input.user || {}) authenticated=input.authenticated />
+  </@header>
+  <@main>
+    <await(poll from PollProvider)>
+      <poll-section poll=poll.data />
+    </await>
+    <!--<await(comments from CommentProvider)> 
+      <comment-section hash=input.hash />
+    </await>-->
+  </@main>
+</include>

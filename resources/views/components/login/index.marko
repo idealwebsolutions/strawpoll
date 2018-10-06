@@ -1,0 +1,40 @@
+<div>
+  <if(input.authenticated)>
+    <a href="#" class="button is-outlined is-danger">Sign out</a>
+  </if>
+  <else>
+    <a href="#" class="button is-outlined is-primary" on-click('_onActivate')>Sign in</a>
+  </else>
+  <div class={ modal: true, 'is-active': state.active }>
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <p class="buttons">
+        <a href="/login/twitter" class="button is-large is-info is-outlined">
+          <span class="icon">
+            <i class="fa fa-twitter" aria-hidden></i>
+          </span>
+          <span>Sign in with Twitter</span>
+        </a>
+        <a href="/login/google" class="button is-large is-danger is-outlined">
+          <span class="icon">
+            <i class="fa fa-google" aria-hidden></i>
+          </span>
+          <span>Sign in with Google</span>
+        </a>
+        <a href="/login/reddit" class="button is-large is-warning is-outlined">
+          <span class="icon">
+            <i class="fa fa-reddit" aria-hidden></i>
+          </span>
+          <span>Sign in with Reddit</span>
+        </a>
+        <a href="/login/twitchtv" class="button is-large is-purple is-outlined">
+          <span class="icon">
+            <i class="fa fa-twitch" aria-hidden></i>
+          </span>
+          <span>Sign in with Twitch</span>
+        </a>
+      </p>      
+    </div>
+    <button class="modal-close is-large" aria-label="close" on-click('_onClose')></button>
+  </div>
+</div>

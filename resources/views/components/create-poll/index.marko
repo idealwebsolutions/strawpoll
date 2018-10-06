@@ -1,0 +1,76 @@
+<!-- novalidate: ie10 > * -->
+<form id="poll" name="poll" class="poll narrow has-background-white-bis" action="/" enctype="application/x-www-form-urlencoded" method="post" novalidate=true autocomplete=false on-submit('submit')>
+  <!-- Question -->
+  <div class="field">
+    <div class="control">
+      <input type="text" name="question" class={ input: true, 'is-large': true, 'is-success': component.validateQuestion(), disabled: state.submitted } value=state.question placeholder="Enter Question (ex: What is your name?)" on-input('setQuestion') />
+    </div>
+  </div>
+  <!-- Answers -->
+  <div class="field" for(choice in state.choices | status-var=loop)>
+    <div class="control">
+      <input type="text", name="choices", class={ input: true, animated: true, slideInUp: true, 'is-normal': true, 'is-success': component.validateChoice(loop.getIndex()) }, placeholder="Enter Answer", value=choice, on-input('setOrAppendChoice', loop.isLast(), loop.getIndex()) />
+    </div>
+  </div>
+  <!-- Options -->
+  <div id="options" class="poll-section">
+    <div class="field">
+      <div class="control">
+        <input type="checkbox" id="multiple" name="multiple" class="is-checkradio is-black" checked=state.multiple on-change('toggleMultiple') /> 
+        <label for="multiple">Allow Multiple Options</label>
+      </div>
+    </div>
+    <div class="field" if(input.authenticated)>
+      <div class="control">
+        <input type="checkbox" id="private" name="private" class="is-checkradio is-black" checked=state.private on-change('togglePrivate') />
+        <label for="private">Go Private</label>
+        <span class="icon tooltip is-tooltip-right" data-tooltip="Allow only those who have a link to view the poll">
+          <i class="fa fa-info-circle"></i>
+        </span>
+      </div>
+    </div>
+    <div class="field" if(input.authenticated)>
+      <input type="checkbox" id="comments" name="comments" class="is-checkradio is-black" checked=state.comments on-change('toggleComments') />
+      <label for="comments">Disable Comments</label>
+      <span class="icon tooltip is-tooltip-right" data-tooltip="Disallow comments to be made/shown on the poll">
+        <i class="fa fa-info-circle"></i>
+      </span>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input type="checkbox" id="protect" name="protect" class="is-checkradio is-black" checked=state.protect on-change('toggleProtect') />
+        <label for="protect">Require Captcha</label>
+      </div>
+    </div>
+  </div>
+  <!-- Tags -->
+  <div class="poll-section">
+    <label class="label" for="tags">Tags (up to 5)</label>
+    <input id="tags" class="input" type="tags" name="tags" placeholder="Enter or comma to add a tag">
+  </div>
+  <!-- Vote Permissions -->
+  <div class="poll-section field">
+    <div class="control">
+      <label class="label" for="permissions">Voting Permissions</label>
+      <span class="select">
+        <select name="permissions" no-update>
+          <option value="moderate" selected="selected">Moderate - Allow a single vote per unique IP (default)</option>
+          <option value="low">Low - Allow multiple votes per unique IP</option>
+          <option value="high" if(input.authenticated)>High - Registered users only</option>
+        </select>
+      </span>
+    </div>
+  </div>
+  <div class="poll-section">
+    <datepicker key="datepicker" date=state.expiry on-dateSelected('onDateSelected') />
+  </div>
+  <div class="poll-section field is-grouped">
+    <div class="control">
+      <input type="hidden" name="_csrf" value=(input.token) />
+      <button class="button is-medium ${state.submitted ? 'is-primary is-loading': 'is-primary'}", disabled=state.disabled || state.submitted, type="submit">Create</button>
+    </div>
+    <div class="control">
+      <button class="button is-medium is-danger", disabled=state.disabled || state.submitted, type="reset", on-click('reset')>Reset</button> 
+    </div>
+  </div>
+</form>

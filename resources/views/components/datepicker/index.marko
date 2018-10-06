@@ -1,0 +1,24 @@
+<div class="field">
+  <label class="label" for="expiry">Expiration Date</label>
+  <div class="field has-addons">
+    <!--<div class="control">
+      <div class="select">
+        <select name="timezone">
+          <option for(timezone in component.timezones | status-var=loop) value=timezone.abbr selected=loop.isFirst()>${timezone.abbr}</option>
+        </select>
+      </div>
+    </div>-->
+    <div class="control">
+      <div key="flatpickr">
+        <input type="text" name="flatpickr" class="input is-normal" placeholder="Select Expiration Date" data-input />
+      </div>
+    </div>
+    <div class="control">
+      <div class="select">
+        <select name="timezone">
+          <option for(timezone in component.timezones | status-var=loop) value=timezone.abbr selected=loop.isFirst()>${timezone.abbr}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

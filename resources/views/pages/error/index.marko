@@ -1,0 +1,19 @@
+<include('../../base.marko')>
+  <@header>
+    <main-navigation user=(input.user || {}) />
+  </@header>
+  <@main>
+    <section class="section">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title has-text-centered">${input.error ? 'An error occured' : 'Page not found'}</h1>        
+        </div>
+        <div class="body">
+          <div class="container">
+            Looks like something went wrong. Please try again later.
+          </div>
+        </div>
+      </div>    
+    </section>
+  </@main>
+</include>

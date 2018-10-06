@@ -1,0 +1,43 @@
+$fa-font-path: '/static/fonts' !default
+
+@import '../../../node_modules/bulma/sass/utilities/_all'
+@import '../../../node_modules/bulma/sass/base/_all'
+@import '../../../node_modules/bulma/sass/grid/columns'
+@import '../../../node_modules/bulma/sass/grid/tiles'
+@import '../../../node_modules/bulma/sass/elements/title'
+@import '../../../node_modules/bulma/sass/elements/button'
+@import '../../../node_modules/bulma/sass/elements/container'
+@import '../../../node_modules/bulma/sass/elements/form'
+@import '../../../node_modules/bulma/sass/elements/notification'
+@import '../../../node_modules/bulma/sass/elements/icon'
+@import '../../../node_modules/bulma/sass/elements/tag'
+@import '../../../node_modules/bulma/sass/elements/progress'
+@import '../../../node_modules/bulma/sass/components/navbar'
+@import '../../../node_modules/bulma/sass/components/level'
+@import '../../../node_modules/bulma/sass/components/modal'
+@import '../../../node_modules/bulma/sass/components/menu'
+@import '../../../node_modules/bulma/sass/components/media'
+@import '../../../node_modules/bulma-tooltip/tooltip'
+// @import '../../../node_modules/bulma-switch/dist/css/bulma-switch'
+@import '../../../node_modules/bulma-checkradio/dist/css/bulma-checkradio'
+@import '../../../node_modules/bulma-tagsinput/dist/css/bulma-tagsinput'
+
+html, body
+  background-color: hsl(0, 0%, 96%)
+
+header, section .heading
+  margin-bottom: 25px
+
+.is-inline
+  display: inline-block
+  font-weight: normal
+
+.poll
+  border-radius: 6px
+  padding: 25px
+
+@media screen and (min-width: 768px)
+  .narrow
+    max-width: 78%
+    margin-left: auto
+    margin-right: auto

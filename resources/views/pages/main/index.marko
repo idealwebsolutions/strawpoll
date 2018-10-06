@@ -1,0 +1,43 @@
+<include('../../base.marko') title=input.title>
+  <@header>
+    <main-navigation user=(input.user || {}) authenticated=input.authenticated />
+  </@header>
+  <@main>
+    <div class="container">  
+      <div class="tile is-ancestor">
+        <div class="tile is-parent is-8">
+          <article class="tile is-child box">
+            <section class="section">
+              <div id="form-container">
+                <div class="heading" no-update-body>
+                  <h1 class="title is-uppercase has-text-centered">Create Polls In A Few Clicks</h1>
+                </div>
+                <div class="body">
+                  <create-poll token=input.token field=input.field authenticated=input.authenticated error=input.error />
+                </div>
+              </div>
+            </section>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <div class="tile is-vertical">
+            <article class="tile is-child box">
+              <p class="title">Trending</p>
+              <p class="subtitle">With some content</p>
+              <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+              </div>
+            </article>
+            <article class="tile is-child box">
+              <p class="title">Newest</p>
+              <p class="subtitle">With some content</p>
+              <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </@main>
+</include>

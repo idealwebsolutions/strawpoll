@@ -1,0 +1,5 @@
+.env
+public
+strawpoll.sqlite
+node_modules
+package-lock.json

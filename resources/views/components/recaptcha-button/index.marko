@@ -1,0 +1,3 @@
+static const { RECAPTCHA_SITE_KEY } = require('../../../../lib/constants')
+
+<button type="submit" class="button is-medium is-outlined is-primary g-recaptcha" data-size="invisible" data-callback="onCaptchaResponse" data-sitekey="${RECAPTCHA_SITE_KEY}" disabled=input.disabled no-update-body>${input.text}</button>

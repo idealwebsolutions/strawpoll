@@ -1,17 +1,16 @@
-<await(comment in comments) placeholder="Loading..." class="comments">
-  <article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="" />
+<article class="media" for(comment in input.comments)>
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="" alt="avatar" />
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>${comment.author.displayName}</strong> <small>posted 10/01/2018</small>
+        <br>
+        ${comment.content}
       </p>
-    </figure>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong></strong> <small></small>
-          <br>
-        </p>
-      </div>
     </div>
-  </article>
-</div>
+  </div>
+</article>

@@ -10,17 +10,31 @@ const {
 const { 
   User,
   Poll, 
-  Choice 
+  Choice,
+  Comment
 } = require('../lib/db')
 
-exports.createFakePosts = async (posts = 1, thread = false) => {
-  while (posts-- > 0) {
-    let post
+exports.createFakeComments = async (comments = 1, thread = false, poll = -1, author = -1) => {
+  while (comments-- > 0) {
+    let comment
 
-    const fakePost = {
+    const fakeComment = {
       type: thread ? COMMENT_TYPE.Thread.key : COMMENT_TYPE.Post.key,
-
+      poll: poll,
+      author: author,
+      content: faker.lorem.sentence()
+      // upvotes: faker.random.number(20)
     }
+    
+    try {
+      comment = await Comment.insert(
+        fakeComment.content, fakeComment.poll, fakeComment.author, fakeComment.type
+      )
+    } catch (err) {
+      return console.error(err)
+    }
+
+    console.log(`Comment created(${comment})`)
   }
 }
 

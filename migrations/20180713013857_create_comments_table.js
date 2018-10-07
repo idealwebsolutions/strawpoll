@@ -16,6 +16,7 @@ exports.up = (knex, Promise) => {
         table.integer('author').notNullable().unsigned()
         table.foreign('author').references('id').inTable(USERS_TABLE_NAME)
         table.enu('type', COMMENT_TYPE.enums.map((type) => type.key)).defaultTo(COMMENT_TYPE.Post.key).notNullable()
+        table.timestamp('created').notNullable().defaultTo(knex.fn.now())
         table.string('content', MAX_COMMENT_CHARACTER_LENGTH).notNullable()
         table.integer('upvotes').unsigned().defaultTo(0)
       })

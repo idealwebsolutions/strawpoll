@@ -16,11 +16,24 @@ $ const CommentProvider = axios.get(`https://127.0.0.1:9000/api/v1/comments/${in
     <main-navigation user=(input.user || {}) authenticated=input.authenticated />
   </@header>
   <@main>
-    <await(poll from PollProvider)>
-      <poll-section poll=poll.data />
-    </await>
-    <!--<await(comments from CommentProvider)> 
-      <comment-section hash=input.hash />
-    </await>-->
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <div class="tile is-child box">
+          <await(poll from PollProvider)>
+            <poll-vote-section poll=poll.data />
+          </await>
+        </div>
+      </div>
+      <div class="tile is-4 is-vertical is-parent">
+        <div class="tile is-child box">
+          <poll-results-section key="results" choices=input.poll.choices />
+        </div>
+        <div class="tile is-child box">
+        </div>
+      </div>
+    </div>
+    <!--<await(comments from CommentProvider)>-->
+    <comment-section hash=input.hash />
+    <!--</await>-->
   </@main>
 </include>

@@ -1,20 +1,20 @@
-// Compiled using marko@4.13.5 - DO NOT EDIT
+// Compiled using marko@4.13.7 - DO NOT EDIT
 "use strict";
 
-var marko_template = module.exports = require("marko/dist/html").t(__filename),
+var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_componentType = "/strawpoll$1.0.0/resources/views/components/poll-cast/index.marko",
     marko_component = require("./component"),
-    components_helpers = require("marko/dist/components/helpers"),
+    components_helpers = require("marko/src/components/helpers"),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c,
-    marko_forEachWithStatusVar = require("marko/dist/runtime/helper-forEachWithStatusVar"),
-    marko_helpers = require("marko/dist/runtime/html/helpers"),
+    marko_forEachWithStatusVar = require("marko/src/runtime/helper-forEachWithStatusVar"),
+    marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_escapeXmlAttr = marko_helpers.xa,
     marko_attr = marko_helpers.a,
     marko_escapeXml = marko_helpers.x,
     marko_loadTag = marko_helpers.t,
-    _preserve_tag = marko_loadTag(require("marko/dist/components/taglib/preserve-tag")),
-    marko_loadTemplate = require("marko/dist/runtime/helper-loadTemplate"),
+    _preserve_tag = marko_loadTag(require("marko/src/components/taglib/preserve-tag")),
+    marko_loadTemplate = require("marko/src/runtime/helper-loadTemplate"),
     recaptcha_button_template = marko_loadTemplate(require.resolve("../recaptcha-button")),
     recaptcha_button_tag = marko_loadTag(recaptcha_button_template);
 
@@ -35,7 +35,7 @@ function render(input, out, __component, component, state) {
   marko_forEachWithStatusVar(input.poll.choices, function(choice, loop) {
     var keyscope__2 = "[" + ((for__1++) + "]");
 
-    var __key4 = __component._h_("3" + keyscope__2);
+    var __key4 = __component.___nextKey("3" + keyscope__2);
 
     out.w("<div class=\"field\">");
 
@@ -63,7 +63,7 @@ function render(input, out, __component, component, state) {
 
   out.w("<div class=\"field\">");
 
-  var __key9 = __component._h_("8");
+  var __key9 = __component.___nextKey("8");
 
   _preserve_tag({
       key: __key9,
@@ -101,7 +101,7 @@ function render(input, out, __component, component, state) {
 }
 
 marko_template._ = marko_renderer(render, {
-    _l_: marko_componentType
+    ___type: marko_componentType
   }, marko_component);
 
 marko_template.Component = marko_defineComponent(marko_component, marko_template._);
@@ -113,7 +113,7 @@ marko_template.meta = {
     id: "/strawpoll$1.0.0/resources/views/components/poll-cast/index.marko",
     component: "./",
     tags: [
-      "marko/dist/components/taglib/preserve-tag",
+      "marko/src/components/taglib/preserve-tag",
       "../recaptcha-button"
     ]
   };

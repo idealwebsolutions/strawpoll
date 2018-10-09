@@ -12,26 +12,15 @@ static {
   <div class="field">
     <label class="label" no-update>Created ${input.poll.created ? spacetime(Date.parse(convertToLocaltime(input.poll.created))).fromNow().qualified : 'sometime ago'} - ${input.poll.views} views</label>
   </div>
-  <div class="level">
-    <div class="level-left">
-      <div class="field">
-        <div class="control">
-          <input type="hidden" name="_csrf" value=state.token />
-          <if(input.poll.captcha)>
-            <recaptcha-button text="Vote" disabled=state.disabled on-captcharesponse('_onCaptchaResponse')></recaptcha-button>
-          </if>
-          <else>
-            <button class="button is-medium is-outlined is-primary" type="submit" disabled=state.disabled>Vote</button>
-          </else>
-        </div>
-      </div>
-    </div>
-    <div class="level-right">
-      <div class="field">
-        <div class="control">
-          <button class="button is-medium is-outlined is-primary">View Results</button>
-        </div>
-      </div>
+  <div class="field">
+    <div class="control">
+      <input type="hidden" name="_csrf" value=state.token />
+      <if(input.poll.captcha)>
+        <recaptcha-button text="Vote" disabled=state.disabled on-captcharesponse('_onCaptchaResponse')></recaptcha-button>
+      </if>
+      <else>
+        <button class="button is-medium is-outlined is-primary" type="submit" disabled=state.disabled>Vote</button>
+      </else>
     </div>
   </div>
 </form>

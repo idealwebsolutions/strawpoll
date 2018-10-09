@@ -1,22 +1,22 @@
-// Compiled using marko@4.13.5 - DO NOT EDIT
+// Compiled using marko@4.13.7 - DO NOT EDIT
 "use strict";
 
-var marko_template = module.exports = require("marko/dist/html").t(__filename),
+var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_componentType = "/strawpoll$1.0.0/resources/views/pages/main/index.marko",
-    components_helpers = require("marko/dist/components/helpers"),
+    components_helpers = require("marko/src/components/helpers"),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c,
-    marko_loadTemplate = require("marko/dist/runtime/helper-loadTemplate"),
+    marko_loadTemplate = require("marko/src/runtime/helper-loadTemplate"),
     base_template = marko_loadTemplate(require.resolve("../../base.marko")),
     main_navigation_template = marko_loadTemplate(require.resolve("../../components/main-navigation")),
-    marko_helpers = require("marko/dist/runtime/html/helpers"),
+    marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     main_navigation_tag = marko_loadTag(main_navigation_template),
     hasRenderBodyKey = Symbol.for("hasRenderBody"),
-    _preserve_tag = marko_loadTag(require("marko/dist/components/taglib/preserve-tag")),
+    _preserve_tag = marko_loadTag(require("marko/src/components/taglib/preserve-tag")),
     create_poll_template = marko_loadTemplate(require.resolve("../../components/create-poll")),
     create_poll_tag = marko_loadTag(create_poll_template),
-    include_tag = marko_loadTag(require("marko/dist/taglibs/core/include-tag"));
+    include_tag = marko_loadTag(require("marko/src/taglibs/core/include-tag"));
 
 function render(input, out, __component, component, state) {
   var data = input;
@@ -36,7 +36,7 @@ function render(input, out, __component, component, state) {
           renderBody: function renderBody(out) {
             out.w("<div class=\"container\"> <div class=\"tile is-ancestor\"><div class=\"tile is-parent is-8\"><article class=\"tile is-child box\"><section class=\"section\"><div id=\"form-container\">");
 
-            var __key11 = __component._h_("10");
+            var __key11 = __component.___nextKey("10");
 
             out.w("<div class=\"heading\">");
 
@@ -65,8 +65,8 @@ function render(input, out, __component, component, state) {
 }
 
 marko_template._ = marko_renderer(render, {
-    ak_: true,
-    _l_: marko_componentType
+    ___implicit: true,
+    ___type: marko_componentType
   });
 
 marko_template.Component = marko_defineComponent({}, marko_template._);
@@ -76,8 +76,8 @@ marko_template.meta = {
     tags: [
       "../../base.marko",
       "../../components/main-navigation",
-      "marko/dist/components/taglib/preserve-tag",
+      "marko/src/components/taglib/preserve-tag",
       "../../components/create-poll",
-      "marko/dist/taglibs/core/include-tag"
+      "marko/src/taglibs/core/include-tag"
     ]
   };

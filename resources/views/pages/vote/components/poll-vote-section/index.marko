@@ -1,0 +1,19 @@
+<section class="section">
+  <div class="container">
+    <div class="heading">
+      <h1 class="title has-text-centered">${input.poll.question}</h1>
+    </div>
+    <div class="body">
+      <div class="container">
+        <div class="narrow">
+          <if(state.editing)>
+            <div></div>
+          </if>
+          <else>
+            <poll-cast poll=input.poll token=input.token />
+          </else>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

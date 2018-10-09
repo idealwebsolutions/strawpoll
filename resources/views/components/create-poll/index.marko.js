@@ -1,19 +1,19 @@
-// Compiled using marko@4.13.5 - DO NOT EDIT
+// Compiled using marko@4.13.7 - DO NOT EDIT
 "use strict";
 
-var marko_template = module.exports = require("marko/dist/html").t(__filename),
+var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_componentType = "/strawpoll$1.0.0/resources/views/components/create-poll/index.marko",
     marko_component = require("./component"),
-    components_helpers = require("marko/dist/components/helpers"),
+    components_helpers = require("marko/src/components/helpers"),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c,
-    marko_helpers = require("marko/dist/runtime/html/helpers"),
+    marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_classAttr = marko_helpers.ca,
     marko_attr = marko_helpers.a,
-    marko_forEachWithStatusVar = require("marko/dist/runtime/helper-forEachWithStatusVar"),
+    marko_forEachWithStatusVar = require("marko/src/runtime/helper-forEachWithStatusVar"),
     marko_loadTag = marko_helpers.t,
-    _preserve_tag = marko_loadTag(require("marko/dist/components/taglib/preserve-tag")),
-    marko_loadTemplate = require("marko/dist/runtime/helper-loadTemplate"),
+    _preserve_tag = marko_loadTag(require("marko/src/components/taglib/preserve-tag")),
+    marko_loadTemplate = require("marko/src/runtime/helper-loadTemplate"),
     datepicker_template = marko_loadTemplate(require.resolve("../datepicker")),
     datepicker_tag = marko_loadTag(datepicker_template),
     marko_escapeXmlAttr = marko_helpers.xa;
@@ -95,7 +95,7 @@ function render(input, out, __component, component, state) {
     }, false) +
     "><label for=\"protect\">Require Captcha</label></div></div></div><div class=\"poll-section\"><label class=\"label\" for=\"tags\">Tags (up to 5)</label><input id=\"tags\" class=\"input\" type=\"tags\" name=\"tags\" placeholder=\"Enter or comma to add a tag\"></div><div class=\"poll-section field\"><div class=\"control\"><label class=\"label\" for=\"permissions\">Voting Permissions</label><span class=\"select\">");
 
-  var __key37 = __component._h_("36");
+  var __key37 = __component.___nextKey("36");
 
   _preserve_tag({
       key: __key37,
@@ -138,7 +138,7 @@ function render(input, out, __component, component, state) {
 }
 
 marko_template._ = marko_renderer(render, {
-    _l_: marko_componentType
+    ___type: marko_componentType
   }, marko_component);
 
 marko_template.Component = marko_defineComponent(marko_component, marko_template._);
@@ -150,7 +150,7 @@ marko_template.meta = {
     id: "/strawpoll$1.0.0/resources/views/components/create-poll/index.marko",
     component: "./",
     tags: [
-      "marko/dist/components/taglib/preserve-tag",
+      "marko/src/components/taglib/preserve-tag",
       "../datepicker"
     ]
   };

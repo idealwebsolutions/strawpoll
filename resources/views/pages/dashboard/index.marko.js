@@ -1,24 +1,24 @@
-// Compiled using marko@4.13.5 - DO NOT EDIT
+// Compiled using marko@4.13.7 - DO NOT EDIT
 "use strict";
 
-var marko_template = module.exports = require("marko/dist/html").t(__filename),
+var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_componentType = "/strawpoll$1.0.0/resources/views/pages/dashboard/index.marko",
-    components_helpers = require("marko/dist/components/helpers"),
+    components_helpers = require("marko/src/components/helpers"),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c,
-    marko_loadTemplate = require("marko/dist/runtime/helper-loadTemplate"),
+    marko_loadTemplate = require("marko/src/runtime/helper-loadTemplate"),
     base_template = marko_loadTemplate(require.resolve("../../base.marko")),
     main_navigation_template = marko_loadTemplate(require.resolve("../../components/main-navigation")),
-    marko_helpers = require("marko/dist/runtime/html/helpers"),
+    marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     main_navigation_tag = marko_loadTag(main_navigation_template),
     hasRenderBodyKey = Symbol.for("hasRenderBody"),
     sidenav_section_template = marko_loadTemplate(require.resolve("./components/sidenav-section")),
     sidenav_section_tag = marko_loadTag(sidenav_section_template),
-    _preserve_tag = marko_loadTag(require("marko/dist/components/taglib/preserve-tag")),
+    _preserve_tag = marko_loadTag(require("marko/src/components/taglib/preserve-tag")),
     summary_section_template = marko_loadTemplate(require.resolve("./components/summary-section")),
     summary_section_tag = marko_loadTag(summary_section_template),
-    include_tag = marko_loadTag(require("marko/dist/taglibs/core/include-tag"));
+    include_tag = marko_loadTag(require("marko/src/taglibs/core/include-tag"));
 
 function render(input, out, __component, component, state) {
   var data = input;
@@ -38,7 +38,7 @@ function render(input, out, __component, component, state) {
           renderBody: function renderBody(out) {
             out.w("<section class=\"section\"><div class=\"container\"><div class=\"columns is-multiline\"><div class=\"column is-one-quarter\">");
 
-            var __key9 = __component._h_("8");
+            var __key9 = __component.___nextKey("8");
 
             _preserve_tag({
                 cid: __key9,
@@ -61,8 +61,8 @@ function render(input, out, __component, component, state) {
 }
 
 marko_template._ = marko_renderer(render, {
-    ak_: true,
-    _l_: marko_componentType
+    ___implicit: true,
+    ___type: marko_componentType
   });
 
 marko_template.Component = marko_defineComponent({}, marko_template._);
@@ -73,8 +73,8 @@ marko_template.meta = {
       "../../base.marko",
       "../../components/main-navigation",
       "./components/sidenav-section",
-      "marko/dist/components/taglib/preserve-tag",
+      "marko/src/components/taglib/preserve-tag",
       "./components/summary-section",
-      "marko/dist/taglibs/core/include-tag"
+      "marko/src/taglibs/core/include-tag"
     ]
   };

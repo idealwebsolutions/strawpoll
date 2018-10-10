@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.7 - DO NOT EDIT
+// Compiled using marko@4.13.5 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -13,9 +13,11 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_loadTag = marko_helpers.t,
     main_navigation_tag = marko_loadTag(main_navigation_template),
     hasRenderBodyKey = Symbol.for("hasRenderBody"),
-    poll_section_template = marko_loadTemplate(require.resolve("./components/poll-section")),
-    poll_section_tag = marko_loadTag(poll_section_template),
+    poll_vote_section_template = marko_loadTemplate(require.resolve("./components/poll-vote-section")),
+    poll_vote_section_tag = marko_loadTag(poll_vote_section_template),
     await_tag = marko_loadTag(require("marko/src/taglibs/async/await-tag")),
+    poll_results_section_template = marko_loadTemplate(require.resolve("./components/poll-results-section")),
+    poll_results_section_tag = marko_loadTag(poll_results_section_template),
     comment_section_template = marko_loadTemplate(require.resolve("./components/comment-section")),
     comment_section_tag = marko_loadTag(comment_section_template),
     include_tag = marko_loadTag(require("marko/src/taglibs/core/include-tag"));
@@ -47,19 +49,29 @@ function render(input, out, __component, component, state) {
         },
       main: {
           renderBody: function renderBody(out) {
+            out.w("<div class=\"tile is-ancestor\"><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
+
             await_tag({
                 _dataProvider: PollProvider,
                 _name: "PollProvider",
                 renderBody: function renderBody(out, poll) {
-                  poll_section_tag({
+                  poll_vote_section_tag({
                       poll: poll.data
-                    }, out, __component, "5");
+                    }, out, __component, "8");
                 }
-              }, out, __component, "4");
+              }, out, __component, "7");
+
+            out.w("</div></div><div class=\"tile is-4 is-vertical is-parent\"><div class=\"tile is-child box\">");
+
+            poll_results_section_tag({
+                choices: input.poll.choices
+              }, out, __component, "results");
+
+            out.w("</div><div class=\"tile is-child box\"></div></div></div>");
 
             comment_section_tag({
                 hash: input.hash
-              }, out, __component, "6");
+              }, out, __component, "12");
           }
         },
       [hasRenderBodyKey]: true
@@ -78,8 +90,9 @@ marko_template.meta = {
     tags: [
       "../../base.marko",
       "../../components/main-navigation",
-      "./components/poll-section",
+      "./components/poll-vote-section",
       "marko/src/taglibs/async/await-tag",
+      "./components/poll-results-section",
       "./components/comment-section",
       "marko/src/taglibs/core/include-tag"
     ]

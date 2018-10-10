@@ -1,4 +1,5 @@
 const faker = require('faker')
+const strftime = require('strftime')
 
 const { 
   PROVIDERS, 
@@ -66,14 +67,16 @@ exports.createFakePolls = async (polls = 1, userid = -1) => {
   // optional: tags
   while (polls-- > 0) {
     let poll
-
+    
     const submission = {
       question: faker.lorem.sentence().replace(/\.$/, '?'),
       answers: faker.random.words(2).split(' '),
       permissions: faker.random.arrayElement(PERMISSIONS.enums).key,
+      created: strftime('%F %T', faker.date.recent(1)),
+      likes: faker.random.number(100),
       user: {}
     }
-
+    
     if (userid > 0) {
       submission['user']['id'] = userid
     }

@@ -16,6 +16,8 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     _preserve_tag = marko_loadTag(require("marko/src/components/taglib/preserve-tag")),
     create_poll_template = marko_loadTemplate(require.resolve("../../components/create-poll")),
     create_poll_tag = marko_loadTag(create_poll_template),
+    poll_preview_template = marko_loadTemplate(require.resolve("../../components/poll-preview")),
+    poll_preview_tag = marko_loadTag(poll_preview_template),
     include_tag = marko_loadTag(require("marko/src/taglibs/core/include-tag"));
 
 function render(input, out, __component, component, state) {
@@ -57,7 +59,15 @@ function render(input, out, __component, component, state) {
                 error: input.error
               }, out, __component, "14");
 
-            out.w("</div></div></section></article></div><div class=\"tile is-parent\"><div class=\"tile is-vertical\"><article class=\"tile is-child box\"><p class=\"title\">Trending</p><p class=\"subtitle\">With some content</p><div class=\"content\"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p></div></article><article class=\"tile is-child box\"><p class=\"title\">Newest</p><p class=\"subtitle\">With some content</p><div class=\"content\"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p></div></article></div></div></div></div>");
+            out.w("</div></div></section></article></div><div class=\"tile is-parent\"><div class=\"tile is-vertical\"><article class=\"tile is-child box\"><p class=\"title\">Trending</p>");
+
+            poll_preview_tag({}, out, __component, "19");
+
+            poll_preview_tag({}, out, __component, "20");
+
+            poll_preview_tag({}, out, __component, "21");
+
+            out.w("</article><article class=\"tile is-child box\"><p class=\"title\">Newest</p><p class=\"subtitle\">With some content</p><div class=\"content\"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p></div></article></div></div></div></div>");
           }
         },
       [hasRenderBodyKey]: true
@@ -78,6 +88,7 @@ marko_template.meta = {
       "../../components/main-navigation",
       "marko/src/components/taglib/preserve-tag",
       "../../components/create-poll",
+      "../../components/poll-preview",
       "marko/src/taglibs/core/include-tag"
     ]
   };

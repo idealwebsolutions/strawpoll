@@ -76,7 +76,7 @@ function render(input, out, __component, component, state) {
       }
     }, out);
 
-  out.w("</div><div class=\"level\"><div class=\"level-left\"><div class=\"field\"><div class=\"control\"><input type=\"hidden\" name=\"_csrf\"" +
+  out.w("</div><div class=\"field\"><div class=\"control\"><input type=\"hidden\" name=\"_csrf\"" +
     marko_attr("value", state.token) +
     ">");
 
@@ -84,7 +84,7 @@ function render(input, out, __component, component, state) {
     recaptcha_button_tag({
         text: "Vote",
         disabled: state.disabled
-      }, out, __component, "15", [
+      }, out, __component, "13", [
       [
         "captcharesponse",
         "_onCaptchaResponse",
@@ -97,7 +97,7 @@ function render(input, out, __component, component, state) {
       ">Vote</button>");
   }
 
-  out.w("</div></div></div><div class=\"level-right\"><div class=\"field\"><div class=\"control\"><button class=\"button is-medium is-outlined is-primary\">View Results</button></div></div></div></div></form>");
+  out.w("</div></div></form>");
 }
 
 marko_template._ = marko_renderer(render, {

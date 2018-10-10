@@ -13,11 +13,9 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_loadTag = marko_helpers.t,
     main_navigation_tag = marko_loadTag(main_navigation_template),
     hasRenderBodyKey = Symbol.for("hasRenderBody"),
-    poll_section_template = marko_loadTemplate(require.resolve("./components/poll-section")),
-    poll_section_tag = marko_loadTag(poll_section_template),
+    poll_monitor_section_template = marko_loadTemplate(require.resolve("./components/poll-monitor-section")),
+    poll_monitor_section_tag = marko_loadTag(poll_monitor_section_template),
     await_tag = marko_loadTag(require("marko/src/taglibs/async/await-tag")),
-    comment_section_template = marko_loadTemplate(require.resolve("./components/comment-section")),
-    comment_section_tag = marko_loadTag(comment_section_template),
     include_tag = marko_loadTag(require("marko/src/taglibs/core/include-tag"));
 
 const { Agent } = require('https')
@@ -32,8 +30,6 @@ function render(input, out, __component, component, state) {
     })
   })
 
-  const CommentProvider = axios.get(`https://127.0.0.1:9000/api/v1/comments/${input.hash}`)
-
   include_tag({
       _target: base_template,
       title: input.title,
@@ -47,19 +43,19 @@ function render(input, out, __component, component, state) {
         },
       main: {
           renderBody: function renderBody(out) {
+            out.w("<div class=\"container\">");
+
             await_tag({
                 _dataProvider: PollProvider,
                 _name: "PollProvider",
                 renderBody: function renderBody(out, poll) {
-                  poll_section_tag({
+                  poll_monitor_section_tag({
                       poll: poll.data
-                    }, out, __component, "5");
+                    }, out, __component, "6");
                 }
-              }, out, __component, "4");
+              }, out, __component, "5");
 
-            comment_section_tag({
-                hash: input.hash
-              }, out, __component, "6");
+            out.w("</div>");
           }
         },
       [hasRenderBodyKey]: true
@@ -78,9 +74,8 @@ marko_template.meta = {
     tags: [
       "../../base.marko",
       "../../components/main-navigation",
-      "./components/poll-section",
+      "./components/poll-monitor-section",
       "marko/src/taglibs/async/await-tag",
-      "./components/comment-section",
       "marko/src/taglibs/core/include-tag"
     ]
   };

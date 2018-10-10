@@ -13,7 +13,7 @@ module.exports = class {
     this.on('reroute', this._onMessageReroute)
     
     this.eventSource = new EventSource(`/live/${this.hash}`) 
-    //this.eventSource.addEventListener('open', () => this.getComponent('results').emit('ready'))
+    this.eventSource.addEventListener('open', () => this.getComponent('results').emit('ready'))
     this.eventSource.addEventListener('error', (err) => console.error(err))
     this.eventSource.addEventListener('pollresults', (results) => this.emit('reroute', 'results', 'initial', results))
     this.eventSource.addEventListener('uservote', (vote) => this.emit('reroute', 'results', 'vote', vote))
@@ -33,7 +33,6 @@ module.exports = class {
     } catch (err) {
       return console.error(err)
     }
-
     // this.getComponent(child).emit(event, parsed)
   }
 }

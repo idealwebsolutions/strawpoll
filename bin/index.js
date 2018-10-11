@@ -19,6 +19,14 @@ if (argv._[0] === 'populate_fake') {
   }
 }
 
-if (argv._[0] === 'generate_api_key') {
-  require('./generate')();
+if (argv._[0] === 'generate') {
+  const generate = require('./generate');
+
+  if (argv._[1] === 'api_key') {
+    generate.newKey();
+  }
+
+  if (argv._[1] === 'trending_polls') {
+    generate.trendingPolls();
+  }
 }

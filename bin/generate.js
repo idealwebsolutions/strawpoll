@@ -1,6 +1,21 @@
-const { API } = require('../lib/db');
+const { 
+  Poll, 
+  API 
+} = require('../lib/db');
 
-module.exports = async () => {
+exports.trendingPolls = async () => {
+  let trending
+
+  try {
+    trending = await Poll.getTrending();
+  } catch (err) {
+    return console.error(err)
+  }
+
+  console.log(`Trending: ${trending}`)
+}
+
+exports.newKey = async () => {
   let key
   
   try {

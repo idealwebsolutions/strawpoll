@@ -7,12 +7,12 @@ exports.trendingPolls = async () => {
   let trending
 
   try {
-    trending = await Poll.getTrending();
+    await Poll.getNewest(); //getTrending();
   } catch (err) {
     return console.error(err)
   }
 
-  console.log(`Trending: ${trending}`)
+  // console.log(`Trending: ${trending}`)
 }
 
 exports.newKey = async () => {

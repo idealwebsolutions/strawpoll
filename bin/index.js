@@ -17,9 +17,15 @@ if (argv._[0] === 'populate_fake') {
   if (argv._[1] === 'users') {
     populate.createFakeUsers(argv._[2]);
   }
-}
 
-if (argv._[0] === 'generate') {
+  if (argv._[1] === 'views') {
+    populate.createFakeViews(argv._[2], argv._[3]);
+  }
+
+  if (argv._[1] === 'votes') {
+    populate.createFakeVotes(argv._[2], argv._[3]);
+  }
+} else if (argv._[0] === 'generate') {
   const generate = require('./generate');
 
   if (argv._[1] === 'api_key') {

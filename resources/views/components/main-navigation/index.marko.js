@@ -21,11 +21,11 @@ function render(input, out, __component, component, state) {
     out.w("<div class=\"navbar-item\"><p class=\"buttons\"><a href=\"/create\" class=\"button is-success\"><span class=\"icon\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i></span><span>Create Poll</span></a></p></div>");
   }
 
-  out.w("<div class=\"navbar-item\"><input type=\"text\" class=\"input\" placeholder=\"\"></div><div class=\"navbar-item\">");
+  out.w("<div class=\"navbar-item\">");
 
   login_tag({
       authenticated: input.authenticated
-    }, out, __component, "16");
+    }, out, __component, "14");
 
   out.w("</div></div></div></nav>");
 }

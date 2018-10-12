@@ -11,9 +11,59 @@ const {
 const { 
   User,
   Poll, 
+  Vote,
+  View,
   Choice,
   Comment
 } = require('../lib/db')
+
+exports.createFakeViews = async (views = 1, poll) => {
+  while (views-- > 0) {
+    const ip = faker.internet.ip()
+
+    try {
+      await View.increment(poll, ip)
+    } catch (err) {
+      return console.error(err)
+    }
+
+    console.log(`New view registered for poll(${poll}) - ${ip}`)
+  }
+}
+
+exports.createFakeVotes = async (votes = 1, poll) => {
+  while (votes-- > 0) {
+    let permission
+
+    try {
+      permission = Poll.getPermission(poll)
+    } catch (err) {
+      return console.error(err)
+    }
+
+    let choices
+
+    try {
+      choices = await Choice.getAll(poll)
+    } catch (err) {
+      return console.error(err)
+    }
+
+    const selected = faker.random.arrayElement(choices)
+    const ip = faker.internet.ip()
+    const userAgent = faker.internet.userAgent()
+
+    let vote
+
+    try {
+      await Vote.insert(poll, selected, permission, ip, userAgent)
+    } catch (err) {
+      return console.error(err)
+    }
+
+    console.log(`Added new vote submission from ${ip}`)
+  }
+}
 
 exports.createFakeComments = async (comments = 1, thread = false, poll = -1, author = -1) => {
   while (comments-- > 0) {
@@ -102,6 +152,6 @@ exports.createFakePolls = async (polls = 1, userid = -1) => {
       return console.error(err)
     }
     
-    console.log(`created new poll(${poll.hash})`)
+    console.log(`created new poll(${poll.hash}) - id ${poll.id}`)
   }
 }

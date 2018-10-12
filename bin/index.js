@@ -35,4 +35,8 @@ if (argv._[0] === 'populate_fake') {
   if (argv._[1] === 'trending_polls') {
     generate.trendingPolls();
   }
+
+  if (argv._[1] === 'newest_polls') {
+    generate.newestPolls();
+  }
 }

@@ -1,0 +1,19 @@
+static {
+  const { Agent } = require('https');
+  const axios = require('axios');
+}
+
+$ const TrendingProvider = axios.get('https://127.0.0.1:9000/api/v1/polls/trending', {
+  httpsAgent: new Agent({
+    rejectUnauthorized: false
+  })
+})
+
+<section class="section">
+  <p class="title">Trending</p>
+  <await(trending from TrendingProvider)>
+    <for(poll in trending.data)>
+      <poll-preview poll=poll />
+    </for>
+  </await>
+</section>

@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.7 - DO NOT EDIT
+// Compiled using marko@4.13.5 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -15,7 +15,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<nav class=\"navbar has-background-white-ter\"><div class=\"container\"><div class=\"navbar-start\"><div class=\"navbar-brand\"><a class=\"navbar-item\" href=\"/\"><h4 id=\"site-title\" class=\"title is-4\">Strawpoll</h4></a></div></div><div class=\"navbar-end\">");
+  out.w("<nav class=\"navbar navbar-transparent\"><div class=\"container\"><div class=\"navbar-start\"><div class=\"navbar-brand\"><a class=\"navbar-item\" href=\"/\"><h4 id=\"site-title\" class=\"title is-4\">Strawpoll</h4></a></div></div><div class=\"navbar-end\">");
 
   if (input.authenticated) {
     out.w("<div class=\"navbar-item\"><p class=\"buttons\"><a href=\"/create\" class=\"button is-success\"><span class=\"icon\"><i class=\"fa fa-plus\" aria-hidden=\"true\"></i></span><span>Create Poll</span></a></p></div>");

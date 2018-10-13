@@ -1,25 +1,23 @@
-<div class="content box">
-  <h5 class="is-5 title has-text-centered">
-    What is the color of my face?
-  </h5>
+<a class="content box" href=`/${input.poll.hash}`>
+  <h5 class="is-5 title has-text-centered">${input.poll.question}</h5>
   <div class="level">
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Views</p>
-        <p class="title">350</p>
+        <p class="title">${input.poll.views}</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Votes</p>
-        <p class="title">10</p>
+        <p class="title">${input.poll.votes}</p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Likes</p>
-        <p class="title">0</p>
+        <p class="title">${input.poll.likes}</p>
       </div>
     </div>
   </div>
-</div>
+</a>

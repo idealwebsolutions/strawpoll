@@ -18,6 +18,10 @@ const {
 } = require('../lib/db')
 
 exports.createFakeViews = async (views = 1, poll) => {
+  if (views === 1) {
+    views = faker.random.number(100)
+  }
+  
   while (views-- > 0) {
     const ip = faker.internet.ip()
 
@@ -32,6 +36,10 @@ exports.createFakeViews = async (views = 1, poll) => {
 }
 
 exports.createFakeVotes = async (votes = 1, poll) => {
+  if (votes === 1) {
+    votes = faker.random.number(100)
+  }
+  
   while (votes-- > 0) {
     let permission
 

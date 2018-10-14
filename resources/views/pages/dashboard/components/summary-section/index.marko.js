@@ -8,8 +8,13 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c;
 
+const { Agent } = require('https');
+const axios = require('axios');
+
 function render(input, out, __component, component, state) {
   var data = input;
+
+  console.log(input.user)
 
   out.w("<! -- Filter for active/expired polls --><div id=\"summary\"><nav class=\"level\"><div class=\"level-item has-text-centered\"><div><p class=\"heading\">Polls</p><p class=\"animated pulse title\">3,456</p></div></div><div class=\"level-item has-text-centered\"><div><p class=\"heading\">Following</p><p class=\"animated pulse title\">123</p></div></div><div class=\"level-item has-text-centered\"><div><p class=\"heading\">Followers</p><p class=\"animated pulse title\">456K</p></div></div></nav></div>");
 }

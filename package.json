@@ -4,7 +4,7 @@
   "description": "Create, manage, and view popular polls",
   "main": "index.js",
   "scripts": {
-    "start:dev": "export DEBUG=knex:tx,controller:poll,controller:vote,schema:* NODE_ENV=development && npm run build-all:dev && node index | pino-colada",
+    "start:dev": "export DEBUG=knex:tx,controller:*,schema:* NODE_ENV=development && npm run build-all:dev && node index | pino-colada",
     "r": "node index | pino-colada",
     "start": "export NODE_ENV=production && npm run build-all && node index | pino-colada",
     "build-all:dev": "rm -f public/*.js public/*.css && node_modules/webpack/bin/webpack.js --progress --mode=development && npm run inject-css && npm run inject-js",

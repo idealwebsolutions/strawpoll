@@ -51,7 +51,9 @@ function render(input, out, __component, component, state) {
 
             out.w("</div><div class=\"column is-three-quarters\">");
 
-            summary_section_tag({}, out, __component, "11");
+            summary_section_tag({
+                user: input.user
+              }, out, __component, "11");
 
             out.w("</div></div></div></section>");
           }

@@ -123,6 +123,10 @@ exports.createFakeUsers = async (users = 1) => {
 exports.createFakePolls = async (polls = 1, userid = -1) => {
   // required: questions, choices, permissions
   // optional: tags
+  if (polls === 0) {
+    polls = faker.random.number(100)
+  }
+  
   while (polls-- > 0) {
     let poll
     

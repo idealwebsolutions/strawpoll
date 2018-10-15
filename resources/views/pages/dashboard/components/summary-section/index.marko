@@ -3,7 +3,7 @@ static {
   const axios = require('axios');
 }
 
-$ console.log(input.user)
+$ const PollProvider = axios.get(`https://127.0.0.1:9000/api/v1/polls/${input.user.id}/10`)
 
 <! -- Filter for active/expired polls -->
 <div id="summary">

@@ -14,7 +14,7 @@ module.exports = class {
     this.on('ready', this._onReady)
 
     google.charts.load('current', { 'packages': ['corechart'] })
-    google.charts.setOnLoadCallback(await this._onLoad.bind(this))
+    google.charts.setOnLoadCallback(this._onLoad.bind(this))
   }
   
   async onDestroy () {
@@ -30,6 +30,7 @@ module.exports = class {
   }
 
   async _onLoad () {
+    console.log('loaded')
     this.chart = new google.visualization.PieChart(this.getEl('chart-container'))
   }
 
@@ -66,6 +67,10 @@ module.exports = class {
   }
 
   async _onDraw () {
+    if (!this.chart) {
+      return
+    }
+
     const tableData = [['Choice', 'Votes']]
     this.state.results.forEach((result) => tableData.push([result.name, result.votes]))
     this.chart.draw(new google.visualization.arrayToDataTable(tableData), {

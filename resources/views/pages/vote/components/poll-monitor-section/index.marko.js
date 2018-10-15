@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.7 - DO NOT EDIT
+// Compiled using marko@4.13.8 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -12,25 +12,26 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     poll_vote_section_tag = marko_loadTag(poll_vote_section_template),
-    poll_results_section_template = marko_loadTemplate(require.resolve("../poll-results-section")),
-    poll_results_section_tag = marko_loadTag(poll_results_section_template);
+    poll_results_template = marko_loadTemplate(require.resolve("../../../../components/poll-results")),
+    poll_results_tag = marko_loadTag(poll_results_template);
 
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<div class=\"tile is-ancestor\"><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
+  out.w("<div class=\"container\"><div class=\"tile is-ancestor\"><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
 
   poll_vote_section_tag({
+      user: input.user,
       poll: input.poll
     }, out, __component, "vote");
 
-  out.w("</div></div><div class=\"tile is-4 is-vertical is-parent\"><div class=\"tile is-child box\">");
+  out.w("</div></div></div><div class=\"tile is-ancestor\"><div class=\"tile is-4 is-parent\"><div class=\"tile is-child box\">");
 
-  poll_results_section_tag({
+  poll_results_tag({
       choices: input.poll.choices
     }, out, __component, "results");
 
-  out.w("</div><div class=\"tile is-child box\">Something</div></div></div>");
+  out.w("</div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\">Poll Stats</div></div></div></div>");
 }
 
 marko_template._ = marko_renderer(render, {
@@ -44,6 +45,6 @@ marko_template.meta = {
     component: "./",
     tags: [
       "../poll-vote-section",
-      "../poll-results-section"
+      "../../../../components/poll-results"
     ]
   };

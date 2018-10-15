@@ -1,9 +1,30 @@
+$ console.log(input.user)
 <div>
   <if(input.authenticated)>
-    <a href="#" class="button is-outlined is-danger">Sign out</a>
+    <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-link">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-32x32">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="avatar" />
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="content">
+              <strong>${input.user.screen_name}</strong>
+            </p> 
+          </div>
+        </div>
+      </div>
+      <div class="navbar-dropdown">
+        <a class="navbar-item is-danger">Sign out</a>
+      </div>
+    </div>
   </if>
   <else>
-    <a href="#" class="button is-outlined is-primary" on-click('_onActivate')>Sign in</a>
+    <div class="navbar-item">
+      <a href="#" class="button is-outlined is-primary" on-click('_onActivate')>Sign in</a>
+    </div>
   </else>
   <div class={ modal: true, 'is-active': state.active }>
     <div class="modal-background"></div>

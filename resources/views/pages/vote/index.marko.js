@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.7 - DO NOT EDIT
+// Compiled using marko@4.13.8 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -46,10 +46,15 @@ function render(input, out, __component, component, state) {
             out.w("<div class=\"container\">");
 
             await_tag({
+                clientReorder: true,
                 _dataProvider: PollProvider,
                 _name: "PollProvider",
+                renderPlaceholder: function renderBody(out) {
+                  out.w("Loading...");
+                },
                 renderBody: function renderBody(out, poll) {
                   poll_monitor_section_tag({
+                      user: input.user || {},
                       poll: poll.data
                     }, out, __component, "6");
                 }

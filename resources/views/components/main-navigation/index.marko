@@ -6,8 +6,6 @@
           <h4 id="site-title" class="title is-4">Strawpoll</h4>
         </a>
       </div>
-    </div>
-    <div class="navbar-end">
       <div class="navbar-item" if(input.authenticated)>
         <p class="buttons">
           <a href="/create" class="button is-success">
@@ -16,14 +14,14 @@
             </span>
             <span>Create Poll</span>
           </a>
-        </p>
+        </p>      
       </div>
+    </div>
+    <div class="navbar-end">
       <!--<div class="navbar-item">
         <input type="text" class="input" placeholder="">
       </div>-->
-      <div class="navbar-item">
-        <login authenticated=input.authenticated />
-      </div>
+      <login user=input.user authenticated=input.authenticated />
       <!--<div class="navbar-item">
         <span class="icon">
         </span>

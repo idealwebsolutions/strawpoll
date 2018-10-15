@@ -1,14 +1,12 @@
-const { parseJSON } = require('../../../../../../lib/util')
+// const { parseJSON } = require('../../../../../../lib/util')
 
 module.exports = class {
   async onCreate (input, out) {
     this.state = {
-      isEditing: false
+      editing: false
     }
-    this.hash = input.poll.hash
-    this.eventSource = null
   }
-  
+  /*
   async onMount () {
     this.on('reroute', this._onMessageReroute)
     
@@ -35,5 +33,5 @@ module.exports = class {
     }
 
     // this.getComponent(child).emit(event, parsed)
-  }
+  }*/
 }

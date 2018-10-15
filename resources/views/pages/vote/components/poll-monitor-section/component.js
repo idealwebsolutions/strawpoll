@@ -2,16 +2,13 @@ const { parseJSON } = require('../../../../../../lib/util')
 
 module.exports = class {
   async onCreate (input, out) {
-    this.state = {
-      isEditing: false
-    }
     this.hash = input.poll.hash
     this.eventSource = null
   }
   
   async onMount () {
     this.on('reroute', this._onMessageReroute)
-    
+
     this.eventSource = new EventSource(`/live/${this.hash}`) 
     this.eventSource.addEventListener('open', () => this.getComponent('results').emit('ready'))
     this.eventSource.addEventListener('error', (err) => console.error(err))
@@ -33,6 +30,7 @@ module.exports = class {
     } catch (err) {
       return console.error(err)
     }
-    // this.getComponent(child).emit(event, parsed)
+    
+    this.getComponent(child).emit(event, parsed)
   }
 }

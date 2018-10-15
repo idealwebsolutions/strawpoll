@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.7 - DO NOT EDIT
+// Compiled using marko@4.13.8 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -8,22 +8,27 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c,
     marko_helpers = require("marko/src/runtime/html/helpers"),
+    marko_escapeXml = marko_helpers.x,
     marko_attr = marko_helpers.a,
     marko_classAttr = marko_helpers.ca;
 
 function render(input, out, __component, component, state) {
   var data = input;
 
+  console.log(input.user)
+
   out.w("<div>");
 
   if (input.authenticated) {
-    out.w("<a href=\"#\" class=\"button is-outlined is-danger\">Sign out</a>");
+    out.w("<div class=\"navbar-item has-dropdown is-hoverable\"><div class=\"navbar-link\"><div class=\"media\"><div class=\"media-left\"><figure class=\"image is-32x32\"><img src=\"https://bulma.io/images/placeholders/96x96.png\" alt=\"avatar\"></figure></div><div class=\"media-content\"><p class=\"content\"><strong>" +
+      marko_escapeXml(input.user.screen_name) +
+      "</strong></p> </div></div></div><div class=\"navbar-dropdown\"><a class=\"navbar-item is-danger\">Sign out</a></div></div>");
   } else {
-    out.w("<a href=\"#\" class=\"button is-outlined is-primary\"" +
+    out.w("<div class=\"navbar-item\"><a href=\"#\" class=\"button is-outlined is-primary\"" +
       marko_attr("data-marko", {
         onclick: __component.d("click", "_onActivate", false)
       }, false) +
-      ">Sign in</a>");
+      ">Sign in</a></div>");
   }
 
   out.w("<div" +
@@ -45,6 +50,9 @@ marko_template._ = marko_renderer(render, {
 marko_template.Component = marko_defineComponent(marko_component, marko_template._);
 
 marko_template.meta = {
+    deps: [
+      "./style.sass"
+    ],
     id: "/strawpoll$1.0.0/resources/views/components/login/index.marko",
     component: "./"
   };

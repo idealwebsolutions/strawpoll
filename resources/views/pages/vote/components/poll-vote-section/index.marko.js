@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.7 - DO NOT EDIT
+// Compiled using marko@4.13.8 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -17,20 +17,21 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<section class=\"section\"><div class=\"container\"><div class=\"heading\"><h1 class=\"title has-text-centered\">" +
+  out.w("<section class=\"section\"><div class=\"narrow\"><div class=\"heading\"><h1 class=\"title has-text-centered\">" +
     marko_escapeXml(input.poll.question) +
-    "</h1></div><div class=\"body\"><div class=\"container\"><div class=\"narrow\">");
+    "</h1></div><div class=\"body\">");
 
   if (state.editing) {
-    out.w("<div></div>");
+    out.w("<div>Can edit</div>");
   } else {
     poll_cast_tag({
         poll: input.poll,
-        token: input.token
-      }, out, __component, "8");
+        token: input.token,
+        editable: input.user.hasOwnProperty("id") && (input.poll.owned === input.user.id)
+      }, out, __component, "6");
   }
 
-  out.w("</div></div></div></div></section>");
+  out.w("</div></div></section>");
 }
 
 marko_template._ = marko_renderer(render, {

@@ -1,3 +1,4 @@
+$ console.log(input.authenticated)
 <!-- novalidate: ie10 > * -->
 <form id="poll" name="poll" class="poll narrow has-background-white-bis" action="/" enctype="application/x-www-form-urlencoded" method="post" novalidate=true autocomplete=false on-submit('submit')>
   <!-- Question -->
@@ -23,18 +24,14 @@
     <div class="field" if(input.authenticated)>
       <div class="control">
         <input type="checkbox" id="private" name="private" class="is-checkradio is-black" checked=state.private on-change('togglePrivate') />
-        <label for="private">Go Private</label>
-        <span class="icon tooltip is-tooltip-right" data-tooltip="Allow only those who have a link to view the poll">
-          <i class="fa fa-info-circle"></i>
-        </span>
+        <label for="private">Make Private</label>
       </div>
     </div>
     <div class="field" if(input.authenticated)>
-      <input type="checkbox" id="comments" name="comments" class="is-checkradio is-black" checked=state.comments on-change('toggleComments') />
-      <label for="comments">Disable Comments</label>
-      <span class="icon tooltip is-tooltip-right" data-tooltip="Disallow comments to be made/shown on the poll">
-        <i class="fa fa-info-circle"></i>
-      </span>
+      <div class="control">
+        <input type="checkbox" id="comments" name="comments" class="is-checkradio is-black" checked=state.comments on-change('toggleComments') />
+        <label for="comments">Disable Comments</label>
+      </div>
     </div>
     <div class="field">
       <div class="control">

@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.8 - DO NOT EDIT
+// Compiled using marko@4.13.7 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -39,7 +39,9 @@ function render(input, out, __component, component, state) {
           renderBody: function renderBody(out) {
             out.w("<div class=\"container\"> <div class=\"tile is-ancestor\"><div class=\"tile is-parent is-8\"><article class=\"tile is-child box\">");
 
-            poll_creation_section_tag({}, out, __component, "8");
+            poll_creation_section_tag({
+                authenticated: input.authenticated
+              }, out, __component, "8");
 
             out.w("</article></div><div class=\"tile is-parent\"><div class=\"tile is-vertical\"><article class=\"tile is-child box\">");
 

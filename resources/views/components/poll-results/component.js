@@ -7,6 +7,7 @@ module.exports = class {
         (choice) => ({ name: choice, votes: 0 })
       )
     }
+    this.queue = []
     this.chart = null
   }
 
@@ -30,12 +31,25 @@ module.exports = class {
   }
 
   async _onLoad () {
-    console.log('loaded')
     this.chart = new google.visualization.PieChart(this.getEl('chart-container'))
+    // Iterate queue and push events
+    while(this.queue.length > 0) {
+      const item = this.queue.shift()
+      this.emit(item.action, item.data)
+    }
   }
 
   async _onVote (vote) {
     console.log('updating')
+
+    if (!this.chart) {
+      this.queue.push({
+        action: 'vote',
+        data: vote
+      })
+      console.log('pushed vote event to queue')
+      return
+    }
 
     Object.assign(this.state, {
       results: this.state.results.map(
@@ -56,6 +70,17 @@ module.exports = class {
   }
 
   async _onInitialResults (results) {
+    console.log('initial')
+
+    if (!this.chart) {
+      this.queue.push({ 
+        action: 'initial',
+        data: results
+      })
+      console.log('pushed initial event to queue')
+      return
+    }
+
     Object.assign(this.state, {
       results: this.state.results.map((result) => {
         const target = results.find((r) => r.name === result.name)

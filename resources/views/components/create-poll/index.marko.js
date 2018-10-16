@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.8 - DO NOT EDIT
+// Compiled using marko@4.13.7 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -20,6 +20,8 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 
 function render(input, out, __component, component, state) {
   var data = input;
+
+  console.log(input.authenticated)
 
   out.w("<form id=\"poll\" name=\"poll\" class=\"poll narrow has-background-white-bis\" action=\"/\" enctype=\"application/x-www-form-urlencoded\" method=\"post\" novalidate" +
     marko_attr("data-marko", {
@@ -76,16 +78,16 @@ function render(input, out, __component, component, state) {
       marko_attr("data-marko", {
         onchange: __component.d("change", "togglePrivate", false)
       }, false) +
-      "><label for=\"private\">Go Private</label><span class=\"icon tooltip is-tooltip-right\" data-tooltip=\"Allow only those who have a link to view the poll\"><i class=\"fa fa-info-circle\"></i></span></div></div>");
+      "><label for=\"private\">Make Private</label></div></div>");
   }
 
   if (input.authenticated) {
-    out.w("<div class=\"field\"><input type=\"checkbox\" id=\"comments\" name=\"comments\" class=\"is-checkradio is-black\"" +
+    out.w("<div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"comments\" name=\"comments\" class=\"is-checkradio is-black\"" +
       marko_attr("checked", state.comments) +
       marko_attr("data-marko", {
         onchange: __component.d("change", "toggleComments", false)
       }, false) +
-      "><label for=\"comments\">Disable Comments</label><span class=\"icon tooltip is-tooltip-right\" data-tooltip=\"Disallow comments to be made/shown on the poll\"><i class=\"fa fa-info-circle\"></i></span></div>");
+      "><label for=\"comments\">Disable Comments</label></div></div>");
   }
 
   out.w("<div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"protect\" name=\"protect\" class=\"is-checkradio is-black\"" +
@@ -95,10 +97,10 @@ function render(input, out, __component, component, state) {
     }, false) +
     "><label for=\"protect\">Require Captcha</label></div></div></div><div class=\"poll-section\"><label class=\"label\" for=\"tags\">Tags (up to 5)</label><input id=\"tags\" class=\"input\" type=\"tags\" name=\"tags\" placeholder=\"Enter or comma to add a tag\"></div><div class=\"poll-section field\"><div class=\"control\"><label class=\"label\" for=\"permissions\">Voting Permissions</label><span class=\"select\">");
 
-  var __key37 = __component.___nextKey("36");
+  var __key34 = __component.___nextKey("33");
 
   _preserve_tag({
-      key: __key37,
+      key: __key34,
       renderBody: function renderBody(out) {
         out.w("<select name=\"permissions\"><option value=\"moderate\" selected=\"selected\">Moderate - Allow a single vote per unique IP (default)</option><option value=\"low\">Low - Allow multiple votes per unique IP</option>");
 

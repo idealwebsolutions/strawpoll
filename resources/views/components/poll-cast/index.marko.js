@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.7 - DO NOT EDIT
+// Compiled using marko@4.13.8 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -76,7 +76,7 @@ function render(input, out, __component, component, state) {
       }
     }, out);
 
-  out.w("</div><div class=\"field\"><div class=\"control\"><input type=\"hidden\" name=\"_csrf\"" +
+  out.w("</div><div class=\"field is-grouped\"><div class=\"control\"><input type=\"hidden\" name=\"_csrf\"" +
     marko_attr("value", state.token) +
     ">");
 
@@ -97,7 +97,13 @@ function render(input, out, __component, component, state) {
       ">Vote</button>");
   }
 
-  out.w("</div></div></form>");
+  out.w("</div>");
+
+  if (input.editable) {
+    out.w("<div class=\"control\"><button class=\"button is-medium is-outlined is-warning\">Edit</button></div>");
+  }
+
+  out.w("<div class=\"control\"><button class=\"button is-medium is-outlined\">Preview Results</button></div></div></form>");
 }
 
 marko_template._ = marko_renderer(render, {

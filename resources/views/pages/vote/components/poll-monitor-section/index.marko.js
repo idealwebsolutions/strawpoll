@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.7 - DO NOT EDIT
+// Compiled using marko@4.13.8 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -13,7 +13,8 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_loadTag = marko_helpers.t,
     poll_vote_section_tag = marko_loadTag(poll_vote_section_template),
     poll_results_template = marko_loadTemplate(require.resolve("../../../../components/poll-results")),
-    poll_results_tag = marko_loadTag(poll_results_template);
+    poll_results_tag = marko_loadTag(poll_results_template),
+    marko_attr = marko_helpers.a;
 
 function render(input, out, __component, component, state) {
   var data = input;
@@ -31,7 +32,9 @@ function render(input, out, __component, component, state) {
       choices: input.poll.choices
     }, out, __component, "results");
 
-  out.w("</div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\">Poll Stats</div></div></div></div>");
+  out.w("</div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\"><div class=\"content\"><h3 class=\"title is-3 has-text-centered\">Share</h3><div class=\"control\"><input class=\"input has-text-centered has-background-grey-lighter\" type=\"text\"" +
+    marko_attr("value", `${state.path}`) +
+    " readonly></div></div></div></div></div></div>");
 }
 
 marko_template._ = marko_renderer(render, {

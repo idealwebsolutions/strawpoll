@@ -12,7 +12,7 @@ static {
   <div class="field">
     <label class="label" no-update>Created ${input.poll.created ? spacetime(Date.parse(convertToLocaltime(input.poll.created))).fromNow().qualified : 'sometime ago'} - ${input.poll.views} views</label>
   </div>
-  <div class="field">
+  <div class="field is-grouped">
     <div class="control">
       <input type="hidden" name="_csrf" value=state.token />
       <if(input.poll.captcha)>
@@ -21,6 +21,12 @@ static {
       <else>
         <button class="button is-medium is-outlined is-primary" type="submit" disabled=state.disabled>Vote</button>
       </else>
+    </div>
+    <div class="control" if(input.editable)>
+      <button class="button is-medium is-outlined is-warning">Edit</button>
+    </div>
+    <div class="control">
+      <button class="button is-medium is-outlined">Preview Results</button>
     </div>
   </div>
 </form>

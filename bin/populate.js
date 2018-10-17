@@ -4,8 +4,7 @@ const strftime = require('strftime')
 const { 
   PROVIDERS, 
   PERMISSIONS,
-  ROLES,
-  COMMENT_TYPE
+  ROLES
 } = require('../lib/constants')
 
 const { 
@@ -13,9 +12,22 @@ const {
   Poll, 
   Vote,
   View,
+  Tag,
   Choice,
   Comment
 } = require('../lib/db')
+
+exports.createFakeTags = async (poll) => {
+  let tags = faker.random.words(faker.random.number({min: 1, max: 5})).replace(/\s/g, ',')
+  
+  try {
+    await Tag.batchAdd(poll, tags)
+  } catch (err) {
+    return console.error(err)
+  }
+
+  console.log(`created ${tags.split(',').length} new tags: ${tags}`)
+}
 
 exports.createFakeViews = async (views = 1, poll) => {
   if (views === 1) {
@@ -73,21 +85,20 @@ exports.createFakeVotes = async (votes = 1, poll) => {
   }
 }
 
-exports.createFakeComments = async (comments = 1, thread = false, poll = -1, author = -1) => {
+exports.createFakeComments = async (comments = 1, poll = -1, author = -1) => {
   while (comments-- > 0) {
     let comment
 
     const fakeComment = {
-      type: thread ? COMMENT_TYPE.Thread.key : COMMENT_TYPE.Post.key,
       poll: poll,
       author: author,
-      content: faker.lorem.sentence()
-      // upvotes: faker.random.number(20)
+      content: faker.lorem.sentence(),
+      upvotes: faker.random.number(20)
     }
     
     try {
       comment = await Comment.insert(
-        fakeComment.content, fakeComment.poll, fakeComment.author, fakeComment.type
+        fakeComment.content, fakeComment.poll, fakeComment.author, fakeComment.upvotes
       )
     } catch (err) {
       return console.error(err)

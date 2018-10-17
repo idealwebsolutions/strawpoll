@@ -1,16 +1,1 @@
-<article class="media" for(comment in input.comments)>
-  <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="" alt="avatar" />
-    </p>
-  </figure>
-  <div class="media-content">
-    <div class="content">
-      <p>
-        <strong>${comment.author.displayName}</strong> <small>posted 10/01/2018</small>
-        <br>
-        ${comment.content}
-      </p>
-    </div>
-  </div>
-</article>
+<comment data=comment for(comment in input.comments) />

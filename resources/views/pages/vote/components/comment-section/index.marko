@@ -1,6 +1,5 @@
 <section class="section">
-  <div class="narrow">
-    <comment-box hash=input.hash />
-    <!--<comment-list />-->
-  </div>
+  <h3 class="title is-3 has-text-centered">Comments</h3>
+  <comment-box user=input.user hash=input.hash />
+  <comment-list authenticated=input.authenticated comments=input.comments />
 </section>

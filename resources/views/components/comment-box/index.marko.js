@@ -1,4 +1,4 @@
-// Compiled using marko@4.13.5 - DO NOT EDIT
+// Compiled using marko@4.13.8 - DO NOT EDIT
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
@@ -21,7 +21,7 @@ function render(input, out, __component, component, state) {
       marko_str(state.rendered) +
       "</div>");
   } else {
-    out.w("<textarea class=\"textarea editor has-background-grey has-text-light\" placeholder=\"Add a comment...\"" +
+    out.w("<textarea class=\"textarea editor has-background-grey-lighter has-text-light\" placeholder=\"Add a comment...\"" +
       marko_attr("value", state.content) +
       marko_attr("data-marko", {
         oninput: __component.d("input", "_onInput", false)
@@ -29,7 +29,7 @@ function render(input, out, __component, component, state) {
       "></textarea>");
   }
 
-  out.w("</p></div><div class=\"field\"><p class=\"control\"><div class=\"toolbar has-background-grey-dark\"><a class=\"button is-pulled-right is-warning\"" +
+  out.w("</p></div><div class=\"field\"><p class=\"control\"><div class=\"toolbar has-background-grey\"><a class=\"button is-pulled-right is-warning\"" +
     marko_attr("data-marko", {
       onclick: __component.d("click", "_onRenderPreview", false)
     }, false) +

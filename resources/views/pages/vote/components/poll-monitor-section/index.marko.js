@@ -12,14 +12,14 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     poll_vote_section_tag = marko_loadTag(poll_vote_section_template),
-    poll_results_template = marko_loadTemplate(require.resolve("../../../../components/poll-results")),
-    poll_results_tag = marko_loadTag(poll_results_template),
+    poll_chart_template = marko_loadTemplate(require.resolve("../../../../components/poll-chart")),
+    poll_chart_tag = marko_loadTag(poll_chart_template),
     marko_attr = marko_helpers.a;
 
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<div class=\"container\"><div class=\"tile is-ancestor\"><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
+  out.w("<div> <div class=\"tile is-ancestor\"><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
 
   poll_vote_section_tag({
       user: input.user,
@@ -28,7 +28,7 @@ function render(input, out, __component, component, state) {
 
   out.w("</div></div></div><div class=\"tile is-ancestor\"><div class=\"tile is-4 is-parent\"><div class=\"tile is-child box\">");
 
-  poll_results_tag({
+  poll_chart_tag({
       choices: input.poll.choices
     }, out, __component, "results");
 
@@ -48,6 +48,6 @@ marko_template.meta = {
     component: "./",
     tags: [
       "../poll-vote-section",
-      "../../../../components/poll-results"
+      "../../../../components/poll-chart"
     ]
   };

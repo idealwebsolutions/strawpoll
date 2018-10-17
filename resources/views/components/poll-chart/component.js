@@ -37,6 +37,8 @@ module.exports = class {
       const item = this.queue.shift()
       this.emit(item.action, item.data)
     }
+
+    this.emit('draw')
   }
 
   async _onVote (vote) {
@@ -90,13 +92,11 @@ module.exports = class {
 
     this.emit('draw')
   }
-
-  async _onDraw () {
-    if (!this.chart) {
-      return
-    }
-
+  
+  // TODO: render empty chart when no data avail
+  async _onDraw () { 
     const tableData = [['Choice', 'Votes']]
+    
     this.state.results.forEach((result) => tableData.push([result.name, result.votes]))
     this.chart.draw(new google.visualization.arrayToDataTable(tableData), {
       legend: 'none',

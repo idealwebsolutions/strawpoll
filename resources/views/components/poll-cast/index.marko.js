@@ -18,8 +18,10 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     recaptcha_button_template = marko_loadTemplate(require.resolve("../recaptcha-button")),
     recaptcha_button_tag = marko_loadTag(recaptcha_button_template);
 
-const spacetime = require('spacetime')
-const { convertToLocaltime } = require('../../../../lib/util');
+const { 
+  convertToLocaltime, 
+  calculateSince 
+} = require('../../../../lib/util');
 
 function render(input, out, __component, component, state) {
   var data = input;
@@ -69,7 +71,7 @@ function render(input, out, __component, component, state) {
       key: __key9,
       renderBody: function renderBody(out) {
         out.w("<label class=\"label\">Created " +
-          marko_escapeXml(input.poll.created ? spacetime(Date.parse(convertToLocaltime(input.poll.created))).fromNow().qualified : "sometime ago") +
+          marko_escapeXml(input.poll.created ? calculateSince(convertToLocaltime(input.poll.created)) : "sometime ago") +
           " - " +
           marko_escapeXml(input.poll.views) +
           " views</label>");

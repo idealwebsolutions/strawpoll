@@ -2,7 +2,7 @@
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
-    marko_componentType = "/strawpoll$1.0.0/resources/views/components/poll-results/index.marko",
+    marko_componentType = "/strawpoll$1.0.0/resources/views/components/poll-chart/index.marko",
     marko_component = require("./component"),
     components_helpers = require("marko/src/components/helpers"),
     marko_renderer = components_helpers.r,
@@ -21,6 +21,6 @@ marko_template._ = marko_renderer(render, {
 marko_template.Component = marko_defineComponent(marko_component, marko_template._);
 
 marko_template.meta = {
-    id: "/strawpoll$1.0.0/resources/views/components/poll-results/index.marko",
+    id: "/strawpoll$1.0.0/resources/views/components/poll-chart/index.marko",
     component: "./"
   };

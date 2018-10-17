@@ -9,6 +9,12 @@ $ const PollProvider = axios.get(`https://127.0.0.1:9000/api/v1/poll/${input.has
   })
 })
 
+$ const CommentProvider = axios.get(`https://127.0.0.1:9000/api/v1/comments/${input.hash}`, {
+  httpsAgent: new Agent({
+    rejectUnauthorized: false
+  })
+})
+
 <include('../../base.marko') title=input.title>
   <@header>
     <main-navigation user=(input.user || {}) authenticated=input.authenticated />
@@ -16,17 +22,31 @@ $ const PollProvider = axios.get(`https://127.0.0.1:9000/api/v1/poll/${input.has
   <@main>
     <div class="container">
       <await(poll from PollProvider) client-reorder=true>
-        <await-placeholder>Loading...</await-placeholder>
+        <await-placeholder>
+          <h5 class="is-5 has-text-centered">Loading poll...</h5>
+        </await-placeholder>
+        <await-error>
+          Failed to load.
+        </await-error>
         <poll-monitor-section user=(input.user || {}) poll=poll.data />
-        <!--<div class="tile is-4 is-vertical is-parent">
-          <div class="tile is-child box">
-            <poll-results-section key="results" choices=input.poll.choices />
-          </div>
-          <div class="tile is-child box">
-            Something
-          </div>
-        </div>-->
       </await>
+      <div class="tile is-ancestor">
+        <div class="tile is-5 is-parent">
+          <div class="tile is-child box">
+            <await(comments from CommentProvider) client-reorder=true>
+              <await-placeholder>
+                <h5 class="is-5 has-text-centered">Loading comments...</h5>
+              </await-placeholder>
+              <comment-section authenticated=input.authenticated user=(input.user || {}) comments=comments.data />
+            </await>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <div class="tile is-child box">
+            Show similar polls
+          </div>
+        </div>
+      </div>
     </div>
   </@main>
 </include>

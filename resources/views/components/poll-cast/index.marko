@@ -1,6 +1,8 @@
 static {
-  const spacetime = require('spacetime')
-  const { convertToLocaltime } = require('../../../../lib/util')
+  const { 
+    convertToLocaltime, 
+    calculateSince 
+  } = require('../../../../lib/util')
 }
 
 <!-- novalidate: ie10 -->
@@ -10,7 +12,7 @@ static {
     <label for=('choice' + loop.getIndex())>${choice}</label>
   </div>
   <div class="field">
-    <label class="label" no-update>Created ${input.poll.created ? spacetime(Date.parse(convertToLocaltime(input.poll.created))).fromNow().qualified : 'sometime ago'} - ${input.poll.views} views</label>
+    <label class="label" no-update>Created ${input.poll.created ? calculateSince(convertToLocaltime(input.poll.created)) : 'sometime ago'} - ${input.poll.views} views</label>
   </div>
   <div class="field is-grouped">
     <div class="control">

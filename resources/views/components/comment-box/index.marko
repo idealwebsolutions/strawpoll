@@ -8,13 +8,13 @@
           </div>
         </if>
         <else>
-          <textarea class="textarea editor has-background-grey has-text-light" placeholder="Add a comment..." on-input('_onInput') value=state.content />
+          <textarea class="textarea editor has-background-grey-lighter has-text-light" placeholder="Add a comment..." on-input('_onInput') value=state.content />
         </else>
       </p>
     </div>
     <div class="field">
       <p class="control">
-        <div class="toolbar has-background-grey-dark">
+        <div class="toolbar has-background-grey">
           <a class="button is-pulled-right is-warning" on-click('_onRenderPreview')>Preview</a>
           <a class="button is-pulled-right is-info" disabled=(state.ready || state.submitted)>Comment</a>
         </div>

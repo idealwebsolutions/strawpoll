@@ -9,6 +9,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_defineComponent = components_helpers.c,
     marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_escapeXml = marko_helpers.x,
+    marko_forEach = marko_helpers.f,
     marko_loadTemplate = require("marko/src/runtime/helper-loadTemplate"),
     poll_cast_template = marko_loadTemplate(require.resolve("../../../../components/poll-cast")),
     marko_loadTag = marko_helpers.t,
@@ -19,7 +20,25 @@ function render(input, out, __component, component, state) {
 
   out.w("<section class=\"section\"><div class=\"narrow\"><div class=\"heading\"><h1 class=\"title has-text-centered\">" +
     marko_escapeXml(input.poll.question) +
-    "</h1></div><div class=\"body\">");
+    "</h1>");
+
+  if (input.poll.tags.length) {
+    out.w("<div class=\"tags\">");
+
+    var for__5 = 0;
+
+    marko_forEach(input.poll.tags, function(tag) {
+      var keyscope__6 = "[" + ((for__5++) + "]");
+
+      out.w("<span class=\"tag\">#" +
+        marko_escapeXml(tag) +
+        "</span>");
+    });
+
+    out.w("</div>");
+  }
+
+  out.w("</div><div class=\"body\">");
 
   if (state.editing) {
     out.w("<div>Can edit</div>");
@@ -28,7 +47,7 @@ function render(input, out, __component, component, state) {
         poll: input.poll,
         token: input.token,
         editable: input.user.hasOwnProperty("id") && (input.poll.owned === input.user.id)
-      }, out, __component, "6");
+      }, out, __component, "10");
   }
 
   out.w("</div></div></section>");

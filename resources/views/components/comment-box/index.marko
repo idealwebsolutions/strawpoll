@@ -8,7 +8,7 @@
           </div>
         </if>
         <else>
-          <textarea class="textarea editor has-background-grey-lighter has-text-light" placeholder="Add a comment..." on-input('_onInput') value=state.content />
+          <textarea class="textarea is-medium editor has-background-grey-lighter has-text-light" placeholder="Add a comment..." on-input('_onInput') value=state.content disabled=input.authenticated />
         </else>
       </p>
     </div>

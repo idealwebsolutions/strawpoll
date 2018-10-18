@@ -2,15 +2,11 @@ const { parseJSON } = require('../../../../../../lib/util')
 
 module.exports = class {
   async onCreate (input, out) {
-    this.state = {
-      path: null
-    }
     this.hash = input.poll.hash
     this.eventSource = null
   }
   
   async onMount () {
-    this.state.path = window.location.href
     this.on('reroute', this._onMessageReroute)
     
     this.eventSource = new EventSource(`/live/${this.hash}`) 

@@ -99,7 +99,7 @@ module.exports = class {
     
     this.state.results.forEach((result) => tableData.push([result.name, result.votes]))
     this.chart.draw(new google.visualization.arrayToDataTable(tableData), {
-      legend: 'none',
+      //legend: 'none',
       backgroundColor: 'transparent'
     })
   }

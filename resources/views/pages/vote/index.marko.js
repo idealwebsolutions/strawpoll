@@ -18,6 +18,8 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     await_tag = marko_loadTag(require("marko/src/taglibs/async/await-tag")),
     comment_section_template = marko_loadTemplate(require.resolve("./components/comment-section")),
     comment_section_tag = marko_loadTag(comment_section_template),
+    similar_polls_section_template = marko_loadTemplate(require.resolve("./components/similar-polls-section")),
+    similar_polls_section_tag = marko_loadTag(similar_polls_section_template),
     include_tag = marko_loadTag(require("marko/src/taglibs/core/include-tag"));
 
 const { Agent } = require('https')
@@ -89,7 +91,11 @@ function render(input, out, __component, component, state) {
                 }
               }, out, __component, "11");
 
-            out.w("</div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\">Show similar polls</div></div></div></div>");
+            out.w("</div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
+
+            similar_polls_section_tag({}, out, __component, "16");
+
+            out.w("</div></div></div></div>");
           }
         },
       [hasRenderBodyKey]: true
@@ -111,6 +117,7 @@ marko_template.meta = {
       "./components/poll-monitor-section",
       "marko/src/taglibs/async/await-tag",
       "./components/comment-section",
+      "./components/similar-polls-section",
       "marko/src/taglibs/core/include-tag"
     ]
   };

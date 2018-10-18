@@ -19,10 +19,12 @@ function render(input, out, __component, component, state) {
 
   out.w("<section class=\"section\"><h3 class=\"title is-3 has-text-centered\">Comments</h3>");
 
-  comment_box_tag({
-      user: input.user,
-      hash: input.hash
-    }, out, __component, "2");
+  if (input.authenticated) {
+    comment_box_tag({
+        user: input.user,
+        hash: input.hash
+      }, out, __component, "2");
+  }
 
   comment_list_tag({
       authenticated: input.authenticated,

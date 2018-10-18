@@ -18,7 +18,7 @@ const {
 } = require('../lib/db')
 
 exports.createFakeTags = async (poll) => {
-  let tags = faker.random.words(faker.random.number({min: 1, max: 5})).replace(/\s/g, ',')
+  let tags = faker.random.words(faker.random.number({min: 1, max: 4})).replace(/\s/g, ',')
   
   try {
     await Tag.batchAdd(poll, tags)

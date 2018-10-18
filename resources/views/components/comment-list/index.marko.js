@@ -16,15 +16,19 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  var for__0 = 0;
+  if (!input.comments.length) {
+    out.w("<div class=\"content is-small has-text-grey-light has-text-centered\"><span class=\"icon is-large\"><i class=\"fa fa-2x fa-comment-slash\"></i></span><h2>No comments found.</h2></div>");
+  } else {
+    var for__4 = 0;
 
-  marko_forEach(input.comments, function(comment) {
-    var keyscope__1 = "[" + ((for__0++) + "]");
+    marko_forEach(input.comments, function(comment) {
+      var keyscope__5 = "[" + ((for__4++) + "]");
 
-    comment_tag({
-        data: comment
-      }, out, __component, "2" + keyscope__1);
-  });
+      comment_tag({
+          data: comment
+        }, out, __component, "6" + keyscope__5);
+    });
+  }
 }
 
 marko_template._ = marko_renderer(render, {

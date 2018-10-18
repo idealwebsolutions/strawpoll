@@ -21,8 +21,9 @@ function render(input, out, __component, component, state) {
       marko_str(state.rendered) +
       "</div>");
   } else {
-    out.w("<textarea class=\"textarea editor has-background-grey-lighter has-text-light\" placeholder=\"Add a comment...\"" +
+    out.w("<textarea class=\"textarea is-medium editor has-background-grey-lighter has-text-light\" placeholder=\"Add a comment...\"" +
       marko_attr("value", state.content) +
+      marko_attr("disabled", input.authenticated) +
       marko_attr("data-marko", {
         oninput: __component.d("input", "_onInput", false)
       }, false) +

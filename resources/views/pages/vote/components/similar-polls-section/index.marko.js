@@ -2,7 +2,7 @@
 "use strict";
 
 var marko_template = module.exports = require("marko/src/html").t(__filename),
-    marko_componentType = "/strawpoll$1.0.0/resources/views/components/page-footer.marko",
+    marko_componentType = "/strawpoll$1.0.0/resources/views/pages/vote/components/similar-polls-section/index.marko",
     components_helpers = require("marko/src/components/helpers"),
     marko_renderer = components_helpers.r,
     marko_defineComponent = components_helpers.c;
@@ -10,7 +10,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<div id=\"external-scripts\"><script async src=\"//www.google.com/recaptcha/api.js\"></script><script defer src=\"//www.gstatic.com/charts/loader.js\"></script><script async src=\"//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js\" integrity=\"sha256-EPrkNjGEmCWyazb3A/Epj+W7Qm2pB9vnfXw+X6LImPM=\" crossorigin=\"anonymous\"></script><script defer src=\"/static/app-ae4e10fc76e19e2985d1.js\"></script></div>");
+  out.w("<section class=\"section\"><div class=\"content has-text-centered\"><h3 class=\"title is-3\">Similar</h3></div></section>");
 }
 
 marko_template._ = marko_renderer(render, {
@@ -21,5 +21,5 @@ marko_template._ = marko_renderer(render, {
 marko_template.Component = marko_defineComponent({}, marko_template._);
 
 marko_template.meta = {
-    id: "/strawpoll$1.0.0/resources/views/components/page-footer.marko"
+    id: "/strawpoll$1.0.0/resources/views/pages/vote/components/similar-polls-section/index.marko"
   };

@@ -6,6 +6,7 @@ module.exports = class {
     this.state = {
       content: '',
       rendered: '',
+      ready: false,
       preview: false,
       submitted: false
     }
@@ -14,7 +15,6 @@ module.exports = class {
   }
 
   async _onInput (event) {
-    console.log(event)
     this.state.content = event.target.value
   }
 

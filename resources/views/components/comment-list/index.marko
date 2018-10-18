@@ -1,1 +1,11 @@
-<comment data=comment for(comment in input.comments) />
+<if(!input.comments.length)>
+    <div class="content is-small has-text-grey-light has-text-centered">
+      <span class="icon is-large">
+        <i class="fa fa-2x fa-comment-slash"></i>
+      </span>
+      <h2>No comments found.</h2>
+    </div>
+</if>
+<else>
+  <comment data=comment for(comment in input.comments) />
+</else>

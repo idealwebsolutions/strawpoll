@@ -14,7 +14,8 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     poll_vote_section_tag = marko_loadTag(poll_vote_section_template),
     poll_chart_template = marko_loadTemplate(require.resolve("../../../../components/poll-chart")),
     poll_chart_tag = marko_loadTag(poll_chart_template),
-    marko_attr = marko_helpers.a;
+    poll_share_section_template = marko_loadTemplate(require.resolve("../poll-share-section")),
+    poll_share_section_tag = marko_loadTag(poll_share_section_template);
 
 function render(input, out, __component, component, state) {
   var data = input;
@@ -32,9 +33,11 @@ function render(input, out, __component, component, state) {
       choices: input.poll.choices
     }, out, __component, "results");
 
-  out.w("</div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\"><div class=\"content\"><h3 class=\"title is-3 has-text-centered\">Share</h3><div class=\"control\"><input class=\"input has-text-centered has-background-grey-lighter\" type=\"text\"" +
-    marko_attr("value", `${state.path}`) +
-    " readonly></div></div></div></div></div></div>");
+  out.w("</div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
+
+  poll_share_section_tag({}, out, __component, "8");
+
+  out.w("</div></div></div></div>");
 }
 
 marko_template._ = marko_renderer(render, {
@@ -48,6 +51,7 @@ marko_template.meta = {
     component: "./",
     tags: [
       "../poll-vote-section",
-      "../../../../components/poll-chart"
+      "../../../../components/poll-chart",
+      "../poll-share-section"
     ]
   };

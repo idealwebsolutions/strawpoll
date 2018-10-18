@@ -25,6 +25,7 @@ function render(input, out, __component, component, state) {
       var keyscope__5 = "[" + ((for__4++) + "]");
 
       comment_tag({
+          authenticated: input.authenticated,
           data: comment
         }, out, __component, "6" + keyscope__5);
     });

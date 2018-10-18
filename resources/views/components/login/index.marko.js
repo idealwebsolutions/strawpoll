@@ -15,18 +15,20 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  console.log(input.user)
-
   out.w("<div>");
 
   if (input.authenticated) {
     out.w("<div class=\"navbar-item has-dropdown is-hoverable\"><div class=\"navbar-link\"><div class=\"media\"><div class=\"media-left\"><figure class=\"image is-32x32\"><img src=\"https://bulma.io/images/placeholders/96x96.png\" alt=\"avatar\"></figure></div><div class=\"media-content\"><p class=\"content\"><strong>" +
       marko_escapeXml(input.user.screen_name) +
-      "</strong></p> </div></div></div><div class=\"navbar-dropdown\"><a class=\"navbar-item is-danger\">Sign out</a></div></div>");
+      "</strong></p> </div></div></div><div class=\"navbar-dropdown\"><a class=\"navbar-item is-danger\"" +
+      marko_attr("data-marko", {
+        onclick: __component.d("click", "_onLogout", false)
+      }, false) +
+      ">Sign out</a></div></div>");
   } else {
     out.w("<div class=\"navbar-item\"><a href=\"#\" class=\"button is-outlined is-primary\"" +
       marko_attr("data-marko", {
-        onclick: __component.d("click", "_onActivate", false)
+        onclick: __component.d("click", "_onToggle", false)
       }, false) +
       ">Sign in</a></div>");
   }
@@ -36,9 +38,17 @@ function render(input, out, __component, component, state) {
       modal: true,
       "is-active": state.active
     }) +
-    "><div class=\"modal-background\"></div><div class=\"modal-content\"><p class=\"buttons\"><a href=\"/login/twitter\" class=\"button is-large is-info is-outlined\"><span class=\"icon\"><i class=\"fa fa-twitter\" aria-hidden></i></span><span>Sign in with Twitter</span></a><a href=\"/login/google\" class=\"button is-large is-danger is-outlined\"><span class=\"icon\"><i class=\"fa fa-google\" aria-hidden></i></span><span>Sign in with Google</span></a><a href=\"/login/reddit\" class=\"button is-large is-warning is-outlined\"><span class=\"icon\"><i class=\"fa fa-reddit\" aria-hidden></i></span><span>Sign in with Reddit</span></a><a href=\"/login/twitchtv\" class=\"button is-large is-purple is-outlined\"><span class=\"icon\"><i class=\"fa fa-twitch\" aria-hidden></i></span><span>Sign in with Twitch</span></a></p> </div><button class=\"modal-close is-large\" aria-label=\"close\"" +
+    "><div class=\"modal-background\"></div><div class=\"modal-content\"><p class=\"buttons\"><a" +
+    marko_attr("href", `/login/twitter?redirect=${state.page}`) +
+    " class=\"button is-large is-info is-outlined\"><span class=\"icon\"><i class=\"fa fa-twitter\" aria-hidden></i></span><span>Sign in with Twitter</span></a><a" +
+    marko_attr("href", `/login/google?redirect=${state.page}`) +
+    " class=\"button is-large is-danger is-outlined\"><span class=\"icon\"><i class=\"fa fa-google\" aria-hidden></i></span><span>Sign in with Google</span></a><a" +
+    marko_attr("href", `/login/reddit?redirect=${state.page}`) +
+    " class=\"button is-large is-warning is-outlined\"><span class=\"icon\"><i class=\"fa fa-reddit\" aria-hidden></i></span><span>Sign in with Reddit</span></a><a" +
+    marko_attr("href", `/login/twitchtv?redirect=${state.page}`) +
+    " class=\"button is-large is-purple is-outlined\"><span class=\"icon\"><i class=\"fa fa-twitch\" aria-hidden></i></span><span>Sign in with Twitch</span></a></p> </div><button class=\"modal-close is-large\" aria-label=\"close\"" +
     marko_attr("data-marko", {
-      onclick: __component.d("click", "_onClose", false)
+      onclick: __component.d("click", "_onToggle", false)
     }, false) +
     "></button></div></div>");
 }

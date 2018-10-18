@@ -14,6 +14,7 @@ module.exports = class {
   async onCreate (input, out) {    
     this.state = {
       error: null,
+      token: '',
       question: '',
       choices: ['', '', ''],
       tags: [],
@@ -31,7 +32,7 @@ module.exports = class {
         reason: input.error.trim()
       }
     }
-
+    
     this.tagsInstance = null
   }
 
@@ -236,6 +237,7 @@ module.exports = class {
   async submit (event) {
     event.preventDefault()
     
+    this.state.token = document.querySelector('meta[name="session"]').getAttribute('content')
     this.emit('trash-draft')
     
     Object.assign(this.state, {

@@ -4,15 +4,14 @@ const { post } = require('axios')
 module.exports = class {
   async onCreate (input, out) {
     this.state = {
+      error: '',
       selected: -1,
       disabled: false,
-      submitted: false,
-      error: ''
+      submitted: false
     }
     
     this.hash = input.poll.hash
     this.choices = input.poll.choices
-    this.token = input.token
   }
 
   async onMount () {
@@ -49,7 +48,7 @@ module.exports = class {
     
     const submission = {
       choice: this.choices[this.state.selected],
-      _csrf: this.token
+      _csrf: document.querySelector('meta[name="session"]').getAttribute('content')
     }
 
     if (captchaResponse) {

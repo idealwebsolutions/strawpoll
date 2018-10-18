@@ -5,6 +5,7 @@ static {
   } = require('../../../../lib/util')
   const md = require('markdown-it')()
   const emoji = require('markdown-it-emoji')
+  
   md.use(emoji)
 }
 
@@ -22,7 +23,7 @@ static {
         $!{md.render(input.data.content)}
       </p>
     </div>
-    <nav class="level is-mobile">
+    <nav class="level is-mobile" if(input.authenticated)>
       <div class="level-left">
         <a class="level-item">
           <span class="icon is-small"><i class="fa fa-reply"></i></span>

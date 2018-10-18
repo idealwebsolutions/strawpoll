@@ -27,15 +27,15 @@ function render(input, out, __component, component, state) {
       poll: input.poll
     }, out, __component, "vote");
 
-  out.w("</div></div></div><div class=\"tile is-ancestor\"><div class=\"tile is-4 is-parent\"><div class=\"tile is-child box\">");
+  out.w("</div></div></div><div class=\"tile is-ancestor\"><div class=\"tile is-4 is-parent\"><div class=\"tile is-child box\"><section class=\"section\">");
 
   poll_chart_tag({
       choices: input.poll.choices
     }, out, __component, "results");
 
-  out.w("</div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
+  out.w("</section></div></div><div class=\"tile is-parent\"><div class=\"tile is-child box\">");
 
-  poll_share_section_tag({}, out, __component, "8");
+  poll_share_section_tag({}, out, __component, "9");
 
   out.w("</div></div></div></div>");
 }

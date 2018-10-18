@@ -27,6 +27,7 @@ function render(input, out, __component, component, state) {
   include_tag({
       _target: base_template,
       title: input.title,
+      token: input.token,
       header: {
           renderBody: function renderBody(out) {
             main_navigation_tag({

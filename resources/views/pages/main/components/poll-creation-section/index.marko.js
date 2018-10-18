@@ -33,7 +33,6 @@ function render(input, out, __component, component, state) {
   out.w("</div><div class=\"body\">");
 
   create_poll_tag({
-      token: input.token,
       field: input.field,
       authenticated: input.authenticated,
       error: input.error

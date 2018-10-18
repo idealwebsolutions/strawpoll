@@ -15,12 +15,12 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     await_tag = marko_loadTag(require("marko/src/taglibs/async/await-tag"));
 
 const { Agent } = require('https');
-const axios = require('axios');
+const { get } = require('axios');
 
 function render(input, out, __component, component, state) {
   var data = input;
 
-  const NewestProvider = axios.get('https://127.0.0.1:9000/api/v1/polls/newest', {
+  const NewestProvider = get('https://127.0.0.1:9000/api/v1/polls/newest', {
     httpsAgent: new Agent({
       rejectUnauthorized: false
     })

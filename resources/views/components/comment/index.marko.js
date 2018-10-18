@@ -17,6 +17,7 @@ const {
 } = require('../../../../lib/util')
 const md = require('markdown-it')()
 const emoji = require('markdown-it-emoji')
+
 md.use(emoji);
 
 function render(input, out, __component, component, state) {
@@ -28,7 +29,13 @@ function render(input, out, __component, component, state) {
     marko_escapeXml(input.data.created ? calculateSince(convertToLocaltime(input.data.created)) : "sometime ago") +
     "</small><br>" +
     marko_str(md.render(input.data.content)) +
-    "</p></div><nav class=\"level is-mobile\"><div class=\"level-left\"><a class=\"level-item\"><span class=\"icon is-small\"><i class=\"fa fa-reply\"></i></span></a><a class=\"level-item\"><span class=\"icon is-small\"><i class=\"fa fa-thumbs-up\"></i></span></a><a class=\"level-item\"><span class=\"icon is-small\"><i class=\"fa fa-flag\"></i></span></a></div></nav></div><div class=\"media-right\"><button class=\"delete\"></button></div></article>");
+    "</p></div>");
+
+  if (input.authenticated) {
+    out.w("<nav class=\"level is-mobile\"><div class=\"level-left\"><a class=\"level-item\"><span class=\"icon is-small\"><i class=\"fa fa-reply\"></i></span></a><a class=\"level-item\"><span class=\"icon is-small\"><i class=\"fa fa-thumbs-up\"></i></span></a><a class=\"level-item\"><span class=\"icon is-small\"><i class=\"fa fa-flag\"></i></span></a></div></nav>");
+  }
+
+  out.w("</div><div class=\"media-right\"><button class=\"delete\"></button></div></article>");
 }
 
 marko_template._ = marko_renderer(render, {

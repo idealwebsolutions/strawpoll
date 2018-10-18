@@ -125,7 +125,7 @@ function render(input, out, __component, component, state) {
   ]);
 
   out.w("</div><div class=\"poll-section field is-grouped\"><div class=\"control\"><input type=\"hidden\" name=\"_csrf\"" +
-    marko_attr("value", input.token) +
+    marko_attr("value", state.token) +
     "><button class=\"button is-medium " +
     marko_escapeXmlAttr(state.submitted ? "is-primary is-loading" : "is-primary") +
     "\"" +

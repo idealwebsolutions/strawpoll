@@ -63,7 +63,7 @@ $ console.log(input.authenticated)
   </div>
   <div class="poll-section field is-grouped">
     <div class="control">
-      <input type="hidden" name="_csrf" value=(input.token) />
+      <input type="hidden" name="_csrf" value=(state.token) />
       <button class="button is-medium ${state.submitted ? 'is-primary is-loading': 'is-primary'}", disabled=state.disabled || state.submitted, type="submit">Create</button>
     </div>
     <div class="control">

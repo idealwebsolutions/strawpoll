@@ -23,18 +23,18 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     include_tag = marko_loadTag(require("marko/src/taglibs/core/include-tag"));
 
 const { Agent } = require('https')
-const axios = require('axios');
+const { get } = require('axios');
 
 function render(input, out, __component, component, state) {
   var data = input;
 
-  const PollProvider = axios.get(`https://127.0.0.1:9000/api/v1/poll/${input.hash}`, {
+  const PollProvider = get(`https://127.0.0.1:9000/api/v1/poll/${input.hash}`, {
     httpsAgent: new Agent({
       rejectUnauthorized: false
     })
   })
 
-  const CommentProvider = axios.get(`https://127.0.0.1:9000/api/v1/comments/${input.hash}`, {
+  const CommentProvider = get(`https://127.0.0.1:9000/api/v1/comments/${input.hash}`, {
     httpsAgent: new Agent({
       rejectUnauthorized: false
     })
@@ -43,6 +43,7 @@ function render(input, out, __component, component, state) {
   include_tag({
       _target: base_template,
       title: input.title,
+      token: input.token,
       header: {
           renderBody: function renderBody(out) {
             main_navigation_tag({

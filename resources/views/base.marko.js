@@ -26,7 +26,8 @@ function render(input, out, __component, component, state) {
   out.w("<!DOCTYPE html><html lang=\"en\">");
 
   page_header_tag({
-      title: data.title
+      title: data.title,
+      token: data.token
     }, out, __component, "1");
 
   out.w("<body>");

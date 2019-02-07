@@ -3,16 +3,17 @@ static {
     convertToLocaltime, 
     calculateSince 
   } = require('../../../../lib/util')
+  const approx = require('approximate-number')
 }
 
 <!-- novalidate: ie10 -->
 <form name="poll" action='' enctype="application/json" method="post" novalidate=true on-submit('_onSubmit')>
   <div class="field" for(choice in input.poll.choices | status-var=loop) no-update-body>
-    <input type="radio" id=('choice' + loop.getIndex()) class="is-checkradio is-black" name="choice" value=choice on-change('_onChange') />
+    <input type="radio" id=('choice' + loop.getIndex()) class="checkradio is-black" name="choice" value=choice on-change('_onChange') />
     <label for=('choice' + loop.getIndex())>${choice}</label>
   </div>
   <div class="field">
-    <label class="label" no-update>Created ${input.poll.created ? calculateSince(convertToLocaltime(input.poll.created)) : 'sometime ago'} - ${input.poll.views} views</label>
+    <label class="label" no-update>Created ${input.poll.created ? calculateSince(convertToLocaltime(input.poll.created)) : 'sometime ago'} - ${approx(input.poll.views)} views</label>
   </div>
   <div class="field is-grouped">
     <div class="control">

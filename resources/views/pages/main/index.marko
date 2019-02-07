@@ -3,24 +3,22 @@
     <main-navigation user=(input.user || {}) authenticated=input.authenticated />
   </@header>
   <@main>
-    <div class="container">  
       <div class="tile is-ancestor">
         <div class="tile is-parent is-8">
-          <article class="tile is-child box">
+          <article class="tile is-child">
             <poll-creation-section authenticated=input.authenticated />
           </article>
         </div>
         <div class="tile is-parent">
           <div class="tile is-vertical">
-            <article class="tile is-child box">
+            <article class="tile is-child">
               <trending-section />
             </article>
-            <article class="tile is-child box">
+            <article class="tile is-child">
               <newest-section />
             </article>
           </div>
         </div>
       </div>
-    </div>
   </@main>
 </include>

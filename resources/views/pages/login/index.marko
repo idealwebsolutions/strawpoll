@@ -1,0 +1,19 @@
+<include('../../base.marko') title=input.title token=input.token>
+  <@header>
+    <main-navigation user=(input.user || {}) />
+  </@header>
+  <@main>
+    <section class="section">
+      <div class="container">
+        <div class="heading">
+          <h1 class="title has-text-centered">Login</h1>        
+        </div>
+        <div class="body">
+          <div class="container">
+            <login-options />
+          </div>
+        </div>
+      </div>    
+    </section>
+  </@main>
+</include>

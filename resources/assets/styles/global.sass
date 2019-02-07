@@ -19,15 +19,19 @@ $fa-font-path: '/static/fonts' !default
 @import '../../../node_modules/bulma/sass/components/menu'
 @import '../../../node_modules/bulma/sass/components/media'
 @import '../../../node_modules/bulma/sass/components/dropdown'
+// @import '../../../node_modules/bulma/sass/components/panel'
 @import '../../../node_modules/bulma-tooltip/tooltip'
 // @import '../../../node_modules/bulma-switch/dist/css/bulma-switch'
-@import '../../../node_modules/bulma-checkradio/dist/css/bulma-checkradio'
+// @import '../../../node_modules/bulma-checkradio/dist/css/bulma-checkradio'
 @import '../../../node_modules/bulma-tagsinput/dist/css/bulma-tagsinput'
 
 html, body
-  background-color: hsl(0, 0%, 96%)
+  background-color: hsl(217, 71%, 53%) //hsl(0, 0%, 100%)
 
-header, section .heading
+header
+  margin-bottom: 15px;
+
+section .heading
   margin-bottom: 25px
 
 .is-inline
@@ -35,8 +39,33 @@ header, section .heading
   font-weight: normal
 
 .poll
-  border-radius: 6px
   padding: 25px
+
+.checkradio
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  display: inline-block
+  position: relative
+  background-color: #fafafa
+  color: #666
+  top: 7px
+  height: 25px
+  width: 25px
+  border: 1px solid
+  border-radius: 2px
+  cursor: pointer
+  margin-right: 7px
+  outline: none
+
+.checkradio:checked::before
+  position: absolute
+  font: 12px/1 'Open Sans', sans-serif
+  left: 8px
+  top: 5px
+  color: red
+  content: '\02143' !important
+  transform: rotate(40deg) !important
 
 @media screen and (min-width: 768px)
   .narrow

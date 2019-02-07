@@ -1,23 +1,14 @@
-<a class="content box" href=`/${input.poll.hash}`>
-  <h5 class="is-5 title has-text-centered">${input.poll.question}</h5>
-  <div class="level">
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Views</p>
-        <p class="title">${input.poll.views}</p>
+<a class="panel-block content" href=`/${input.poll.hash}`>
+  <article class="media">
+    <figure class="media-left">
+      <span class="icon is-large">
+        <i class="fas fa-2x fa-chart-pie" />
+      </span>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p class="is-5 title has-text-left">${input.poll.question}</p>
       </div>
     </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Votes</p>
-        <p class="title">${input.poll.votes}</p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Likes</p>
-        <p class="title">${input.poll.likes}</p>
-      </div>
-    </div>
-  </div>
+  </article>
 </a>

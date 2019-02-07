@@ -9,6 +9,7 @@ require('core-js/fn/object/assign');
 // Require client-side components
 require('../../views/pages/main');
 require('../../views/pages/vote');
+require('../../views/pages/login');
 require('../../views/pages/dashboard');
 // Initialize components
 require('marko/components').init();

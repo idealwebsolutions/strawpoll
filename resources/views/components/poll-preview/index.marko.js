@@ -14,17 +14,11 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<a class=\"content box\"" +
+  out.w("<a class=\"panel-block content\"" +
     marko_attr("href", `/${input.poll.hash}`) +
-    "><h5 class=\"is-5 title has-text-centered\">" +
+    "><article class=\"media\"><figure class=\"media-left\"><span class=\"icon is-large\"><i class=\"fas fa-2x fa-chart-pie\"></i></span></figure><div class=\"media-content\"><div class=\"content\"><p class=\"is-5 title has-text-left\">" +
     marko_escapeXml(input.poll.question) +
-    "</h5><div class=\"level\"><div class=\"level-item has-text-centered\"><div><p class=\"heading\">Views</p><p class=\"title\">" +
-    marko_escapeXml(input.poll.views) +
-    "</p></div></div><div class=\"level-item has-text-centered\"><div><p class=\"heading\">Votes</p><p class=\"title\">" +
-    marko_escapeXml(input.poll.votes) +
-    "</p></div></div><div class=\"level-item has-text-centered\"><div><p class=\"heading\">Likes</p><p class=\"title\">" +
-    marko_escapeXml(input.poll.likes) +
-    "</p></div></div></div></a>");
+    "</p></div></div></article></a>");
 }
 
 marko_template._ = marko_renderer(render, {

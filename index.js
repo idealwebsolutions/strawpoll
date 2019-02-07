@@ -10,6 +10,9 @@ const router = require('./lib/http/router')
 const middleware = require('./lib/http/middleware')
 const auth = require('./lib/http/middleware/auth')
 
+// require('marko/hot-reload').enable()
+// require('marko/browser-refresh').enable()
+
 const app = express()
 
 app.use(middleware)
@@ -25,5 +28,11 @@ app.use(router)
 
 const server = createServer(require('spdy-keys'), app)
   .listen(process.env.PORT || 9000, '0.0.0.0', 
-    () => console.log(`Listening on port ${server.address().port}`)
+    () => {
+      /*if (process.send) {
+        process.send('online')
+      }*/
+
+      console.log(`Listening on port ${server.address().port}`)
+    }
 )

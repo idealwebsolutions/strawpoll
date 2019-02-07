@@ -1,6 +1,6 @@
 $ console.log(input.authenticated)
 <!-- novalidate: ie10 > * -->
-<form id="poll" name="poll" class="poll narrow has-background-white-bis" action="/" enctype="application/x-www-form-urlencoded" method="post" novalidate=true autocomplete=false on-submit('submit')>
+<form id="poll" name="poll" class="poll narrow has-background-white" action="/" enctype="application/x-www-form-urlencoded" method="post" novalidate=true autocomplete=false on-submit('submit')>
   <!-- Question -->
   <div class="field">
     <div class="control">
@@ -17,33 +17,39 @@ $ console.log(input.authenticated)
   <div id="options" class="poll-section">
     <div class="field">
       <div class="control">
-        <input type="checkbox" id="multiple" name="multiple" class="is-checkradio is-black" checked=state.multiple on-change('toggleMultiple') /> 
+        <input type="checkbox" id="multiple" name="multiple" class="checkradio is-black" checked=state.multiple on-change('toggleMultiple') />
         <label for="multiple">Allow Multiple Options</label>
       </div>
     </div>
     <div class="field" if(input.authenticated)>
       <div class="control">
-        <input type="checkbox" id="private" name="private" class="is-checkradio is-black" checked=state.private on-change('togglePrivate') />
+        <input type="checkbox" id="private" name="private" class="checkradio is-black" checked=state.private on-change('togglePrivate') />
         <label for="private">Make Private</label>
       </div>
     </div>
     <div class="field" if(input.authenticated)>
       <div class="control">
-        <input type="checkbox" id="comments" name="comments" class="is-checkradio is-black" checked=state.comments on-change('toggleComments') />
+        <input type="checkbox" id="comments" name="comments" class="checkradio is-black" checked=state.comments on-change('toggleComments') />
         <label for="comments">Disable Comments</label>
       </div>
     </div>
     <div class="field">
       <div class="control">
-        <input type="checkbox" id="protect" name="protect" class="is-checkradio is-black" checked=state.protect on-change('toggleProtect') />
+        <input type="checkbox" id="protect" name="protect" class="checkradio is-black" checked=state.protect on-change('toggleProtect') />
         <label for="protect">Require Captcha</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <input type="checkbox" id="expire" name="expire" class="checkradio is-black" checked=state.useExpiration on-change('toggleExpires') />
+        <label for="expire">Add Expiration</label>
       </div>
     </div>
   </div>
   <!-- Tags -->
   <div class="poll-section">
-    <label class="label" for="tags">Tags (up to 5)</label>
-    <input id="tags" class="input" type="tags" name="tags" placeholder="Enter or comma to add a tag">
+    <label class="label" for="tags">Tags</label>
+    <input id="tags" class="input" type="tags" name="tags" placeholder="Enter to add a tag">
   </div>
   <!-- Vote Permissions -->
   <div class="poll-section field">
@@ -58,7 +64,7 @@ $ console.log(input.authenticated)
       </span>
     </div>
   </div>
-  <div class="poll-section">
+  <div class="poll-section" if(state.useExpiration)>
     <datepicker key="datepicker" date=state.expiry on-dateSelected('onDateSelected') />
   </div>
   <div class="poll-section field is-grouped">

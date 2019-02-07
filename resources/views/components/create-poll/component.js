@@ -19,6 +19,7 @@ module.exports = class {
       choices: ['', '', ''],
       tags: [],
       expiry: '',
+      useExpiration: false,
       multiple: false,
       private: false,
       protect: false,
@@ -231,6 +232,12 @@ module.exports = class {
   toggleProtect () {
     Object.assign(this.state, {
       protect: !this.state.protect
+    })
+  }
+
+  toggleExpires () {
+    Object.assign(this.state, {
+      useExpiration: !this.state.useExpiration
     })
   }
 

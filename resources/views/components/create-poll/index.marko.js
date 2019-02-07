@@ -23,7 +23,7 @@ function render(input, out, __component, component, state) {
 
   console.log(input.authenticated)
 
-  out.w("<form id=\"poll\" name=\"poll\" class=\"poll narrow has-background-white-bis\" action=\"/\" enctype=\"application/x-www-form-urlencoded\" method=\"post\" novalidate" +
+  out.w("<form id=\"poll\" name=\"poll\" class=\"poll narrow has-background-white\" action=\"/\" enctype=\"application/x-www-form-urlencoded\" method=\"post\" novalidate" +
     marko_attr("data-marko", {
       onsubmit: __component.d("submit", "submit", false)
     }, false) +
@@ -65,15 +65,15 @@ function render(input, out, __component, component, state) {
       "></div></div>");
   });
 
-  out.w("<div id=\"options\" class=\"poll-section\"><div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"multiple\" name=\"multiple\" class=\"is-checkradio is-black\"" +
+  out.w("<div id=\"options\" class=\"poll-section\"><div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"multiple\" name=\"multiple\" class=\"checkradio is-black\"" +
     marko_attr("checked", state.multiple) +
     marko_attr("data-marko", {
       onchange: __component.d("change", "toggleMultiple", false)
     }, false) +
-    "> <label for=\"multiple\">Allow Multiple Options</label></div></div>");
+    "><label for=\"multiple\">Allow Multiple Options</label></div></div>");
 
   if (input.authenticated) {
-    out.w("<div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"private\" name=\"private\" class=\"is-checkradio is-black\"" +
+    out.w("<div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"private\" name=\"private\" class=\"checkradio is-black\"" +
       marko_attr("checked", state.private) +
       marko_attr("data-marko", {
         onchange: __component.d("change", "togglePrivate", false)
@@ -82,7 +82,7 @@ function render(input, out, __component, component, state) {
   }
 
   if (input.authenticated) {
-    out.w("<div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"comments\" name=\"comments\" class=\"is-checkradio is-black\"" +
+    out.w("<div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"comments\" name=\"comments\" class=\"checkradio is-black\"" +
       marko_attr("checked", state.comments) +
       marko_attr("data-marko", {
         onchange: __component.d("change", "toggleComments", false)
@@ -90,17 +90,22 @@ function render(input, out, __component, component, state) {
       "><label for=\"comments\">Disable Comments</label></div></div>");
   }
 
-  out.w("<div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"protect\" name=\"protect\" class=\"is-checkradio is-black\"" +
+  out.w("<div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"protect\" name=\"protect\" class=\"checkradio is-black\"" +
     marko_attr("checked", state.protect) +
     marko_attr("data-marko", {
       onchange: __component.d("change", "toggleProtect", false)
     }, false) +
-    "><label for=\"protect\">Require Captcha</label></div></div></div><div class=\"poll-section\"><label class=\"label\" for=\"tags\">Tags (up to 5)</label><input id=\"tags\" class=\"input\" type=\"tags\" name=\"tags\" placeholder=\"Enter or comma to add a tag\"></div><div class=\"poll-section field\"><div class=\"control\"><label class=\"label\" for=\"permissions\">Voting Permissions</label><span class=\"select\">");
+    "><label for=\"protect\">Require Captcha</label></div></div><div class=\"field\"><div class=\"control\"><input type=\"checkbox\" id=\"expire\" name=\"expire\" class=\"checkradio is-black\"" +
+    marko_attr("checked", state.useExpiration) +
+    marko_attr("data-marko", {
+      onchange: __component.d("change", "toggleExpires", false)
+    }, false) +
+    "><label for=\"expire\">Add Expiration</label></div></div></div><div class=\"poll-section\"><label class=\"label\" for=\"tags\">Tags</label><input id=\"tags\" class=\"input\" type=\"tags\" name=\"tags\" placeholder=\"Enter to add a tag\"></div><div class=\"poll-section field\"><div class=\"control\"><label class=\"label\" for=\"permissions\">Voting Permissions</label><span class=\"select\">");
 
-  var __key34 = __component.___nextKey("33");
+  var __key38 = __component.___nextKey("37");
 
   _preserve_tag({
-      key: __key34,
+      key: __key38,
       renderBody: function renderBody(out) {
         out.w("<select name=\"permissions\"><option value=\"moderate\" selected=\"selected\">Moderate - Allow a single vote per unique IP (default)</option><option value=\"low\">Low - Allow multiple votes per unique IP</option>");
 
@@ -112,19 +117,25 @@ function render(input, out, __component, component, state) {
       }
     }, out);
 
-  out.w("</span></div></div><div class=\"poll-section\">");
+  out.w("</span></div></div>");
 
-  datepicker_tag({
-      date: state.expiry
-    }, out, __component, "datepicker", [
-    [
-      "dateSelected",
-      "onDateSelected",
-      false
-    ]
-  ]);
+  if (state.useExpiration) {
+    out.w("<div class=\"poll-section\">");
 
-  out.w("</div><div class=\"poll-section field is-grouped\"><div class=\"control\"><input type=\"hidden\" name=\"_csrf\"" +
+    datepicker_tag({
+        date: state.expiry
+      }, out, __component, "datepicker", [
+      [
+        "dateSelected",
+        "onDateSelected",
+        false
+      ]
+    ]);
+
+    out.w("</div>");
+  }
+
+  out.w("<div class=\"poll-section field is-grouped\"><div class=\"control\"><input type=\"hidden\" name=\"_csrf\"" +
     marko_attr("value", state.token) +
     "><button class=\"button is-medium " +
     marko_escapeXmlAttr(state.submitted ? "is-primary is-loading" : "is-primary") +

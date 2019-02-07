@@ -21,7 +21,8 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 const { 
   convertToLocaltime, 
   calculateSince 
-} = require('../../../../lib/util');
+} = require('../../../../lib/util')
+const approx = require('approximate-number');
 
 function render(input, out, __component, component, state) {
   var data = input;
@@ -47,7 +48,7 @@ function render(input, out, __component, component, state) {
         renderBody: function renderBody(out) {
           out.w("<input type=\"radio\" id=\"choice" +
             marko_escapeXmlAttr(loop.getIndex()) +
-            "\" class=\"is-checkradio is-black\" name=\"choice\"" +
+            "\" class=\"checkradio is-black\" name=\"choice\"" +
             marko_attr("value", choice) +
             marko_attr("data-marko", {
               onchange: __component.d("change", "_onChange", false)
@@ -73,7 +74,7 @@ function render(input, out, __component, component, state) {
         out.w("<label class=\"label\">Created " +
           marko_escapeXml(input.poll.created ? calculateSince(convertToLocaltime(input.poll.created)) : "sometime ago") +
           " - " +
-          marko_escapeXml(input.poll.views) +
+          marko_escapeXml(approx(input.poll.views)) +
           " views</label>");
       }
     }, out);

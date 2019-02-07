@@ -1,19 +1,22 @@
 require('dotenv').load()
 
+const { join } = require('path')
 const { NoEmitOnErrorsPlugin } = require('webpack')
-const RenameOutputPlugin = require('rename-output-webpack-plugin')
+// const RenameOutputPlugin = require('rename-output-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: `${__dirname}/resources/assets/scripts/index.js`
+    app: `${__dirname}/resources/assets/scripts/index.js`,
+//    main: `${__dirname}/resources/assets/scripts/main.js`
   },
   externals: {
     google: 'google'
   },
   output: {
-    filename: '[name]-[id].js',
-    path: `${__dirname}/public`
+    path: join(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/static/'
   },
   resolve: {
     extensions: ['.js', '.marko']
@@ -46,16 +49,16 @@ module.exports = {
             'css-loader',
             'sass-loader'
           ],
-          publicPath: `${__dirname}/public`
+          //publicPath: `${__dirname}/public`
         })
       }
     ]
   },
   plugins: [
     new NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin('[name]-[hash].css'),
-    new RenameOutputPlugin({
+    new ExtractTextPlugin('bundle.css'), // [name]-[hash].css
+    /*new RenameOutputPlugin({
       app: '[name]-[hash].js'
-    })
+    })*/
   ]
 }

@@ -38,21 +38,21 @@ function render(input, out, __component, component, state) {
         },
       main: {
           renderBody: function renderBody(out) {
-            out.w("<div class=\"container\"> <div class=\"tile is-ancestor\"><div class=\"tile is-parent is-8\"><article class=\"tile is-child box\">");
+            out.w("<div class=\"tile is-ancestor\"><div class=\"tile is-parent is-8\"><article class=\"tile is-child\">");
 
             poll_creation_section_tag({
                 authenticated: input.authenticated
-              }, out, __component, "8");
+              }, out, __component, "7");
 
-            out.w("</article></div><div class=\"tile is-parent\"><div class=\"tile is-vertical\"><article class=\"tile is-child box\">");
+            out.w("</article></div><div class=\"tile is-parent\"><div class=\"tile is-vertical\"><article class=\"tile is-child\">");
 
-            trending_section_tag({}, out, __component, "12");
+            trending_section_tag({}, out, __component, "11");
 
-            out.w("</article><article class=\"tile is-child box\">");
+            out.w("</article><article class=\"tile is-child\">");
 
-            newest_section_tag({}, out, __component, "14");
+            newest_section_tag({}, out, __component, "13");
 
-            out.w("</article></div></div></div></div>");
+            out.w("</article></div></div></div>");
           }
         },
       [hasRenderBodyKey]: true

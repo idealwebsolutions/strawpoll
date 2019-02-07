@@ -1,23 +1,6 @@
 const { post } = require('axios')
 
 module.exports = class {
-  async onCreate (input, out) {
-    this.state = {
-      active: false,
-      page: ''
-    }
-  }
-
-  async onMount () {
-    this.state.page = window.location.pathname === '/' ? `${window.location.origin}/user/dashboard` : window.location.href
-  }
-
-  async _onToggle (event) {
-    event.preventDefault()
-
-    this.state.active = !this.state.active
-  }
-
   async _onLogout (event) {
     const token = document.querySelector('meta[name="session"]').getAttribute('content')
     let response

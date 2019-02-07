@@ -24,7 +24,7 @@ function render(input, out, __component, component, state) {
     httpsAgent: new Agent({
       rejectUnauthorized: false
     })
-  })
+  });
 
   out.w("<section class=\"section\"><p class=\"title\">Trending</p>");
 

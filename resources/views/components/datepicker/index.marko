@@ -4,7 +4,9 @@
     <!--<div class="control">
       <div class="select">
         <select name="timezone">
-          <option for(timezone in component.timezones | status-var=loop) value=timezone.abbr selected=loop.isFirst()>${timezone.abbr}</option>
+          <for|timezone, index| of=component.timezones>
+            <option value=timezone.abbr selected=index === 0>${timezone.abbr}</option>
+          </for>
         </select>
       </div>
     </div>-->
@@ -16,7 +18,9 @@
     <div class="control">
       <div class="select">
         <select name="timezone">
-          <option for(timezone in component.timezones | status-var=loop) value=timezone.abbr selected=loop.isFirst()>${timezone.abbr}</option>
+          <for|timezone,index| of=component.timezones>
+            <option value=timezone.abbr selected=`${index === 0}`>${timezone.abbr}</option>
+          </for>
         </select>
       </div>
     </div>

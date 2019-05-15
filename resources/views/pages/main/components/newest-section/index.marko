@@ -11,8 +11,11 @@ $ const NewestProvider = get('https://127.0.0.1:9000/api/v1/polls/newest', {
 
 <section class="section">
   <p class="title">Newest</p>
-  <await(newest from NewestProvider)>
-    <for(poll in newest.data)>
+  <await(NewestProvider)>
+    <@placeholder>
+      Loading newest polls...
+    </@placeholder>
+    <for|poll| of=newest.data>
       <poll-preview poll=poll />
     </for>
   </await>

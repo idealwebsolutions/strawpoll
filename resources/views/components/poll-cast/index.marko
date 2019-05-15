@@ -8,10 +8,12 @@ static {
 
 <!-- novalidate: ie10 -->
 <form name="poll" action='' enctype="application/json" method="post" novalidate=true on-submit('_onSubmit')>
-  <div class="field" for(choice in input.poll.choices | status-var=loop) no-update-body>
-    <input type="radio" id=('choice' + loop.getIndex()) class="checkradio is-black" name="choice" value=choice on-change('_onChange') />
-    <label for=('choice' + loop.getIndex())>${choice}</label>
-  </div>
+  <for|choice,index| of=input.poll.choices>
+    <div class="field" no-update-body>
+      <input type="radio" id=('choice' + index) class="checkradio is-black" name="choice" value=choice on-change('_onChange') />
+      <label for=('choice' + index)>${choice}</label>
+    </div>
+  </for>
   <div class="field">
     <label class="label" no-update>Created ${input.poll.created ? calculateSince(convertToLocaltime(input.poll.created)) : 'sometime ago'} - ${approx(input.poll.views)} views</label>
   </div>
@@ -25,9 +27,11 @@ static {
         <button class="button is-medium is-outlined is-primary" type="submit" disabled=state.disabled>Vote</button>
       </else>
     </div>
-    <div class="control" if(input.editable)>
-      <button class="button is-medium is-outlined is-warning">Edit</button>
-    </div>
+    <if(input.editable)>
+      <div class="control">
+        <button class="button is-medium is-outlined is-warning">Edit</button>
+      </div>
+    </if>
     <div class="control">
       <button class="button is-medium is-outlined">Preview Results</button>
     </div>

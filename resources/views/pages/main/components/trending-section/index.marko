@@ -11,9 +11,14 @@ $ const TrendingProvider = get('https://127.0.0.1:9000/api/v1/polls/trending', {
 
 <section class="section">
   <p class="title">Trending</p>
-  <await(trending from TrendingProvider)>
-    <for(poll in trending.data)>
-      <poll-preview poll=poll />
-    </for>
+  <await(TrendingProvider)>
+    <@placeholder>
+      Loading trending polls...
+    </@placeholder>
+    <@then|trending|>
+      <for|poll| of=trending.data>
+        <poll-preview poll=poll />
+      </for>
+    </@then>
   </await>
 </section>

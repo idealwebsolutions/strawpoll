@@ -129,9 +129,10 @@ module.exports = class {
     this.emit('validate-form')
   }
 
-  setOrAppendChoice (last, index, event) {
+  setOrAppendChoice (index, event) {
+    // TODO: check we're the last element in the array
     if ((this.state.choices.length < MAX_CHOICES_LIMIT) 
-      && last && event.target.value.length > 1) {
+      && (this.state.choices.length - 1) === index && event.target.value.length > 1) {
         this.state.choices[index] = event.target.value
         Object.assign(this.state, {
           choices: this.state.choices.concat('')

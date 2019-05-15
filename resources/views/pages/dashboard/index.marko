@@ -1,4 +1,6 @@
-<include('../../base.marko') title=input.title token=input.token>
+import Base from '../../base.marko'
+
+<${Base} title=input.title token=input.token>
   <@header>
     <main-navigation user=(input.user || {}) authenticated=input.authenticated />
   </@header>
@@ -16,4 +18,4 @@
       </div>
     </section>
   </@main>
-</include>
+</>

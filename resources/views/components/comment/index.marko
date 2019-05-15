@@ -23,19 +23,21 @@ static {
         $!{md.render(input.data.content)}
       </p>
     </div>
-    <nav class="level is-mobile" if(input.authenticated)>
-      <div class="level-left">
-        <a class="level-item">
-          <span class="icon is-small"><i class="fa fa-reply"></i></span>
-        </a>
-        <a class="level-item">
-          <span class="icon is-small"><i class="fa fa-thumbs-up"></i></span>
-        </a>
-        <a class="level-item">
-          <span class="icon is-small"><i class="fa fa-flag"></i></span>
-        </a>
-      </div>
-    </nav>
+    <if(input.authenticated)>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-reply"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-thumbs-up"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-flag"></i></span>
+          </a>
+        </div>
+      </nav>
+    </if>
   </div>
   <div class="media-right">
     <button class="delete"></button>

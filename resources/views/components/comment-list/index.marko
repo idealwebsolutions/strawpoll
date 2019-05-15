@@ -7,5 +7,7 @@
     </div>
 </if>
 <else>
-  <comment authenticated=input.authenticated data=comment for(comment in input.comments) />
+  <for|comment| of=input.comments>
+    <comment authenticated=input.authenticated data=comment />
+  </for>
 </else>

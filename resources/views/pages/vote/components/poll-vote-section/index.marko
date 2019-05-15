@@ -2,9 +2,13 @@
   <div class="narrow">
     <div class="heading">
       <h1 class="title has-text-centered">${input.poll.question}</h1>
-      <div class="tags" if(input.poll.tags.length)>
-        <span class="tag" for(tag in input.poll.tags)>#${tag}</span>
-      </div>
+      <if(input.polls.tags.length)>
+        <div class="tags">
+          <for|tag| of=input.polls.tags>
+            <span class="tag">#${tag}</span>
+          </for>
+        </div>
+      </if>
     </div>
     <div class="body">
       <if(state.editing)>

@@ -15,29 +15,38 @@ $ const CommentProvider = get(`https://127.0.0.1:9000/api/v1/comments/${input.ha
   })
 })
 
-<include('../../base.marko') title=input.title token=input.token>
+import Base from '../../base.marko'
+
+<${Base} title=input.title token=input.token>
   <@header>
     <main-navigation user=(input.user || {}) authenticated=input.authenticated />
   </@header>
   <@main>
     <div class="container">
-      <await(poll from PollProvider) client-reorder=true>
-        <await-placeholder>
+      <await(PollProvider) client-reorder=true>
+        <@placeholder>
           <h5 class="is-5 has-text-centered">Loading poll...</h5>
-        </await-placeholder>
-        <await-error>
+        </@placeholder>
+        <@error>
           Failed to load.
-        </await-error>
-        <poll-monitor-section user=(input.user || {}) poll=poll.data />
+        </@error>
+        <@then|poll|>
+          <poll-monitor-section user=(input.user || {}) poll=poll.data />
+        </@then>
       </await>
       <div class="tile is-ancestor">
         <div class="tile is-5 is-parent">
           <div class="tile is-child box">
-            <await(comments from CommentProvider) client-reorder=true>
-              <await-placeholder>
+            <await(CommentProvider) client-reorder=true>
+              <@placeholder>
                 <h5 class="is-5 has-text-centered">Loading comments...</h5>
-              </await-placeholder>
-              <comment-section authenticated=input.authenticated user=(input.user || {}) comments=comments.data />
+              </@placeholder>
+              <@error>
+                Failed to load.
+              </@error>
+              <@then|comments|>
+                <comment-section authenticated=input.authenticated user=(input.user || {}) comments=comments.data />
+              </@then>
             </await>
           </div>
         </div>
@@ -49,4 +58,4 @@ $ const CommentProvider = get(`https://127.0.0.1:9000/api/v1/comments/${input.ha
       </div>
     </div>
   </@main>
-</include>
+</>

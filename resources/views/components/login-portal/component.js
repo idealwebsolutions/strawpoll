@@ -1,4 +1,5 @@
 const { post } = require('axios')
+// import axios from 'axios'
 
 module.exports = class {
   async _onLogout (event) {
@@ -6,7 +7,7 @@ module.exports = class {
     let response
     
     try {
-      response = await post(`${window.location.origin}/user/logout`, {
+      response = await axios.post(`${window.location.origin}/user/logout`, {
         _csrf: token
       })
     } catch (err) {

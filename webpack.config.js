@@ -24,10 +24,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.marko/,
-        use: 'marko-loader'
-      },
-      {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {

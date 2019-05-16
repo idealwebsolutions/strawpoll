@@ -1,4 +1,3 @@
-// require('../styles/global.sass');
 // Polyfill for native runtime generator (async/await)
 require('regenerator-runtime/runtime');
 // import runtime from 'regenerator-runtime';

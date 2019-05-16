@@ -1,5 +1,5 @@
 const store = require('browser-store');
-const bulmaTagsInput = require('bulma-tagsinput');
+// const bulmaTagsInput = require('bulma-tagsinput');
 
 const {
   MAX_CHOICES_LIMIT,
@@ -38,9 +38,9 @@ module.exports = class {
   }
 
   async onMount () {
-    this.tagsInstance = new bulmaTagsInput('#tags', {
+    /*this.tagsInstance = new bulmaTagsInput('#tags', {
       duplicates: false
-    })
+    })*/
     this.tagsInstance.element.addEventListener('change', this._onTagsInput.bind(this))
 
     this.on('validate-form', this._onValidate)
@@ -80,7 +80,7 @@ module.exports = class {
   async onDestroy () {
     console.log('called on destroy')
     this.reset()
-    this.tagsInstance.destroy()
+    // this.tagsInstance.destroy()
     
     const datepicker = this.getComponent('datepicker')
     
@@ -159,6 +159,7 @@ module.exports = class {
   }
 
   resetTags () {
+    /*
     if (!this.tagsInstance) {
       throw new Error('resetTags: No instance available')
     }
@@ -166,20 +167,20 @@ module.exports = class {
     this.tagsInstance.reset()
     this.tagsInstance.container.querySelectorAll('.control')
       .forEach((el) => el.remove())
-    this.tagsInstance.setInputWidth()
+    this.tagsInstance.setInputWidth()*/
   }
 
   async _onTagsInput () {
-    const tags = this.tagsInstance.getValue().split(',')
+    /*const tags = this.tagsInstance.getValue().split(',')
 
     if (tags.length > MAX_TAGS_INPUTS) {
       tags.pop()
       this.resetTags()
       this.tagsInstance.addTag(tags)
       return
-    }
+    }*/
     
-    this.state.tags = tags
+    this.state.tags = [] //tags
   }
 
   async _onSave () {

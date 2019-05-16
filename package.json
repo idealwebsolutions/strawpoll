@@ -68,6 +68,7 @@
     "regenerator": "^0.13.2",
     "spacetime": "^4.5.1",
     "spdy": "^3.4.7",
+    "spectre.css": "^0.5.8",
     "sse-channel": "^3.1.1",
     "strftime": "^0.10.0",
     "timezones.json": "^1.4.5",

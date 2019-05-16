@@ -17,7 +17,7 @@ $ const CommentProvider = get(`https://127.0.0.1:9000/api/v1/comments/${input.ha
 
 import Base from '../../base.marko'
 
-<${Base} title=input.title token=input.token>
+<${Base} title=input.title token=input.token script='vote'>
   <@header>
     <main-navigation user=(input.user || {}) authenticated=input.authenticated />
   </@header>

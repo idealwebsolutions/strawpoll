@@ -1,5 +1,5 @@
 module.exports = class {
-  async onCreate () {
+  onCreate () {
     this.state = {}
   }
 }

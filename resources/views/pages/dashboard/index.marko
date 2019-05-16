@@ -1,6 +1,6 @@
 import Base from '../../base.marko'
 
-<${Base} title=input.title token=input.token>
+<${Base} title=input.title token=input.token component='dashboard'>
   <@header>
     <main-navigation user=(input.user || {}) authenticated=input.authenticated />
   </@header>

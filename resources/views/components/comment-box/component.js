@@ -1,5 +1,5 @@
-const md = require('markdown-it')({ breaks: true })
-const emoji = require('markdown-it-emoji/light')
+// const md = require('markdown-it')({ breaks: true })
+// const emoji = require('markdown-it-emoji/light')
 
 module.exports = class {
   async onCreate (input, out) {
@@ -11,7 +11,7 @@ module.exports = class {
       submitted: false
     }
 
-    md.use(emoji)
+    // md.use(emoji)
   }
 
   async _onInput (event) {
@@ -20,6 +20,6 @@ module.exports = class {
 
   async _onRenderPreview () {
     this.state.preview = !this.state.preview
-    this.state.rendered = md.render(this.state.content)
+    // this.state.rendered = md.render(this.state.content)
   }
 }

@@ -1,4 +1,4 @@
-const { post } = require('axios')
+import { post } from 'axios'
 // import axios from 'axios'
 
 module.exports = class {

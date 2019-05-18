@@ -40,8 +40,8 @@ module.exports = class {
   async onMount () {
     /*this.tagsInstance = new bulmaTagsInput('#tags', {
       duplicates: false
-    })*/
-    this.tagsInstance.element.addEventListener('change', this._onTagsInput.bind(this))
+    })
+    this.tagsInstance.element.addEventListener('change', this._onTagsInput.bind(this))*/
 
     this.on('validate-form', this._onValidate)
     this.on('save-draft', this._onSave)

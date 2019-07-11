@@ -16,10 +16,10 @@
   </for>
   <!-- Options -->
   <div id="options" class="poll-section">
-    <div class="field">
+    <div class="form-group"> <!--field-->
       <div class="control">
         <input type="checkbox" id="multiple" name="multiple" class="checkradio is-black" checked=state.multiple on-change('toggleMultiple') />
-        <label for="multiple">Allow Multiple Options</label>
+        <label class="form-checkbox" for="multiple">Allow Multiple Options</label>
       </div>
     </div>
     <if(input.authenticated)>

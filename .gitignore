@@ -1,5 +1,5 @@
 public
-strawpoll.sqlite
+strawpoll.db
 node_modules
 package-lock.json
 .cache/

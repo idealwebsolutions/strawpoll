@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: {
+    site: `${__dirname}/resources/assets/scripts/site.js`,
     main: `${__dirname}/resources/assets/scripts/main.js`,
     login: `${__dirname}/resources/assets/scripts/login.js`,
     vote: `${__dirname}/resources/assets/scripts/vote.js`,

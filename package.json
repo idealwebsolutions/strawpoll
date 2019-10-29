@@ -49,7 +49,7 @@
     "ioredis": "^3.2.2",
     "is-ip": "^2.0.0",
     "is-my-json-valid": "^2.19.0",
-    "knex": "^0.15.2",
+    "knex": "^0.20.0",
     "markdown-it": "^8.4.2",
     "markdown-it-emoji": "^1.4.0",
     "marko": "^4.16.14",
